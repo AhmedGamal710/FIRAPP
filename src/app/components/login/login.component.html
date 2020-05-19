@@ -1,0 +1,18 @@
+<div class="login">
+    <div class="container">
+        <div class="modal-body">
+            <h5 class="modal-title text-center" id="exampleModalLabel">Login</h5>
+            <form #f="ngForm" (ngSubmit)="login(f)" class="form-group">
+              <input class="form-control" placeholder="Enter Your email" type="text" ngModel #email="ngModel" name="email" #email required>
+              <p class="alert alert-danger" *ngIf="email.touched && email.errors?.required">Please enter your email</p>
+              <p class="alert alert-danger" *ngIf="email.touched && email.errors?.email">Please enter the real Email</p>
+    
+              <input class="form-control" placeholder="Enter Your password" type="password" minlength="6"  ngModel #password="ngModel" ngModel name="password" required>
+              <p class="alert alert-danger" *ngIf="password.invalid && password.touched">Please enter your password</p>
+              <p class="alert alert-danger" *ngIf="password.invalid && password.touched && password.errors.minlength">password should be 6+ charachter</p>
+    
+              <button type="submit" class="form-done">Login</button>
+            </form>
+          </div>
+    </div>
+</div>

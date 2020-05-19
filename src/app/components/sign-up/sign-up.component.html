@@ -1,0 +1,44 @@
+
+<!-- Modal Rigestr -->
+<div class="sign-up">
+    <div class="container">
+        <div class="modal-body">
+            <h5 class="modal-title text-center"  id="exampleModalLabel">Rigister</h5>
+            <form #form="ngForm" (ngSubmit)="sinup(form)" class="form-group">
+              <input class="form-control" placeholder="Enter Your Name" type="text" name="name" ngModel #name="ngModel" required>
+              <p class="alert alert-danger" *ngIf="name.invalid && name.touched">Please enter your name</p>
+        
+              <input class="form-control" placeholder="Enter Your email" type="text" ngModel #email="ngModel" name="email" #email required>
+              <p class="alert alert-danger" *ngIf="email.touched && email.errors?.required">Please enter your email</p>
+              <p class="alert alert-danger" *ngIf="email.touched && email.errors?.email">Please enter the real Email</p>
+        
+              <input class="form-control" placeholder="Enter Your password" type="password" minlength="6"  ngModel #password="ngModel" ngModel name="password" required>
+              <p class="alert alert-danger" *ngIf="password.invalid && password.touched">Please enter your password</p>
+              <p class="alert alert-danger" *ngIf="password.invalid && password.touched && password.errors.minlength">password should be 6+ charachter</p>
+        
+              <input class="form-control" placeholder="Vefiry Your password " type="password"  ngModel #password2="ngModel" name="password2" required>
+              <p class="alert alert-danger" *ngIf="password.value !== password2.value && password2.touched">Please enter the same password</p>
+              
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                </div>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+              </div>
+        
+              <input class="form-control" placeholder="Enter Your Phone" type="number" minlength="11"  ngModel #Phone="ngModel" ngModel name="Phone" required>
+              <p class="alert alert-danger" *ngIf="Phone.touched && Phone.errors?.minlength">Enter the real phone (11Nuber)</p>
+        
+              <input class="form-control" placeholder="Enter Your country" type="text"  ngModel #country="ngModel" ngModel name="country" required>
+        
+              <input class="form-control" placeholder="Enter Your Age" type="number"  ngModel #Age="ngModel" ngModel name="Age" required>
+              <textarea name="content"  placeholder="Some Information About You" class="form-control"></textarea>
+              <button type="submit" class=" form-done">Login</button>
+            </form>
+          </div>
+    </div>
+</div>
+  <!-- end register modal -->

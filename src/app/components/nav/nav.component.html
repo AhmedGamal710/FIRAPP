@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light navbar-laravel" style="margin-bottom: 20px;">
+  <div class="container">
+    <a class="navbar-brand" href="#"> <img src="../../../assets/image/nav/logo.png" alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Left Side Of Navbar -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <span class="badge badge-pill badge-primary" style="float:right;margin-bottom:-25px;">new</span>
+          <a class="nav-link" href="messages">Politic <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">World <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Tech <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <span class="badge badge-pill badge-primary" style="float:right;margin-bottom:-25px;">new</span>
+          <a class="nav-link" href="#">Sports <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Life style <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Fashon <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">pages <span class="sr-only">(current)</span></a>
+        </li>
+        <form class="form-inline d-flex justify-content-center md-form form-sm mt-0">
+          <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search"
+            aria-label="Search">
+        </form>
+      </ul>
+      <!-- Right Side Of Navbar -->
+      <ul class="navbar-nav ml-auto">
+        <li><a class="nav-link" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a></li>
+        <li><a class="nav-link" [routerLink]="['/signup']" routerLinkActive="router-link-active" >Register</a></li>
+      </ul>
+      <!-- Button trigger modal -->
+
+<!-- Modal Login -->
+<div class="modal fade" id="Login" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="exampleModalLabel">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#Rigister" data-dismiss="modal">Rigester</button>
+        <button type="button" class="btn btn-disable">Login</button>
+      </div>
+      <div class="modal-body">
+
+        <form f="form" class="form-group">
+          <input class="form-control" placeholder="Enter Your email" type="text" ngModel #email="ngModel" name="email" #email required>
+          <p class="alert alert-danger" *ngIf="email.touched && email.errors?.required">Please enter your email</p>
+          <p class="alert alert-danger" *ngIf="email.touched && email.errors?.email">Please enter the real Email</p>
+
+          <input class="form-control" placeholder="Enter Your password" type="password" minlength="6"  ngModel #password="ngModel" ngModel name="password" required>
+          <p class="alert alert-danger" *ngIf="password.invalid && password.touched">Please enter your password</p>
+          <p class="alert alert-danger" *ngIf="password.invalid && password.touched && password.errors.minlength">password should be 6+ charachter</p>
+
+          <button type="submit" class="form-done">Login</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!-- end modal login -->
+    </div>
+  </div>
+</nav>
