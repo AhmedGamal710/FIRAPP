@@ -461,7 +461,7 @@ router.post("/add/category/Opensource", parseUrlencoded,async(req,res)=>{
  */
 
 router.get("/categories/web",async(req,res)=>{
-  let result = await web.find({});
+  let result = await web.find({}).populate("post")
   res.json(result)
 
 
@@ -480,7 +480,7 @@ router.get("/categories/web",async(req,res)=>{
  */
 
 router.get("/categories/Applicationdevelopment",async(req,res)=>{
-  let result = await android.find({});
+  let result = await android.find({}).populate("post")
   res.json(result)
 
 
@@ -500,7 +500,7 @@ router.get("/categories/Applicationdevelopment",async(req,res)=>{
  */
 
 router.get("/categories/Miscellaneousfields",async(req,res)=>{
-  let result = await testing.find({});
+  let result = await testing.find({}).populate("post")
   res.json(result)
 
 
@@ -519,7 +519,7 @@ router.get("/categories/Miscellaneousfields",async(req,res)=>{
  */
 
 router.get("/categories/Competitiveprogramming",async(req,res)=>{
-  let result = await competitive.find({});
+  let result = await competitive.find({}).populate("post")
   res.json(result)
 
 
@@ -540,7 +540,7 @@ router.get("/categories/Competitiveprogramming",async(req,res)=>{
  */
 
 router.get("/categories/Datascience",async(req,res)=>{
-  let result = await data.find({});
+  let result = await data.find({}).populate("post")
   res.json(result)
 
 
@@ -560,7 +560,7 @@ router.get("/categories/Datascience",async(req,res)=>{
  */
 
 router.get("/categories/Machinelearning",async(req,res)=>{
-  let result = await machine.find({});
+  let result = await machine.find({}).populate("post")
   res.json(result)
 
 
@@ -579,7 +579,7 @@ router.get("/categories/Machinelearning",async(req,res)=>{
  */
 
 router.get("/categories/Opensource",async(req,res)=>{
-  let result = await opensource.find({});
+  let result = await opensource.find({}).populate("post")
   res.json(result)
 
 
