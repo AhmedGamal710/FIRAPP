@@ -261,17 +261,38 @@ router.delete("/comment/delete/:id",parseUrlencoded,async(req,res)=>{
 
 
 
-// router.post("/comment/update/:id",parseUrlencoded,async(req,res)=>{
+  /**
+ * @swagger
+* /xlarge/user/comment/update/:id:
+ *  post:
+ *    description: Use to update  a specific comment in post , putting the id of the comment in the url
+ *    parameters:
+ *      - name: comment
+ *        description: the new comment
+ *        required: true
+ *    responses:
+ *      '200':
+ *        description: comment is updated successfully 
+ */
 
 
-//   post.update(
-//     { "comments._id": req.params.id },
-//     { "$push": { "comments.comment": req.body.comment } },
-//     function(err,numAffected) {
-// res.json("done")
-//     }
-// );
-// })
+
+
+router.post("/comment/update/:id",parseUrlencoded,async(req,res)=>{
+
+
+  post.update(
+    { "comments._id": req.params.id },
+    {'$set': {'comments.$.comment':req.body.comment }}
+    ,
+    function(err,data) {
+      if(err){
+        console.log(err)
+      }
+res.json("done")
+    }
+);
+})
 
   /**
  * @swagger
