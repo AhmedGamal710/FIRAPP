@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './shared/components/layouts/home/home.component';
 import { DashboardComponent } from './shared/components/layouts/dashboard/dashboard.component';
 import { AuthComponent } from './shared/components/layouts/auth/auth.component';
+import { PostsModule } from './views/posts/posts.module';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,14 +13,26 @@ const routes: Routes = [
     children: [
       {
         path: 'posts',
-        loadChildren: () => import('./views/posts/posts.module').then(m => m.PostsModule)
+        loadChildren: () => PostsModule
       }
     ]
   },
+
+
+
   {
     path: 'auth',
-    component: AuthComponent
+    component: AuthComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./views/auth/auth.module').then(m => m.AuthModule)
+      }
+    ]
   }
+
+
+
 ];
 
 @NgModule({
