@@ -13,6 +13,7 @@ import {Signup} from '../../../shared/classes/signup'
 export class SignupComponent implements OnInit {
   title = 'angular-image-uploader';
   uploaderror
+  countryHasErr:any
   imageChangedEvent: any = '';
   croppedImage: any = '';
   toggler=false
@@ -60,15 +61,26 @@ this.uploaderror="please retry again"
     console.log(error))
 
   }
+  Validatecountry(countryname) {
+    if (countryname === "default") {
+      this.countryHasErr = true;
+    } else {
+      this.countryHasErr = false;
+    }
+  }
   onSubmit() {
-    var croppedImagee = this.dataURItoBlob(this.croppedImage);
 
     console.log(this.croppedImage)
     var fd = new FormData();
     fd.append('name', this.signupModel.name);        
     fd.append('email', this.signupModel.email);
     fd.append('password', this.signupModel.password);
-    fd.append('img', croppedImagee );
+    if(this.croppedImage){
+      var croppedImagee = this.dataURItoBlob(this.croppedImage);
+
+      fd.append('img', croppedImagee );
+
+    }
     fd.append('country', this.signupModel.country);
     fd.append('phone', this.signupModel.phone);
     fd.append('Age', this.signupModel.Age);
