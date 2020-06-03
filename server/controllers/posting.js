@@ -61,10 +61,30 @@ var {data,validatedata}=require("../models/datascience")
  *  post:
  *    description: Use to create new post in web category
  *    parameters:
- *    -  in: body
- *       name: body
- *       description: "create new post"
+ *    -  name: "title"
+ *       in: query
+ *       description: "post title"
  *       required: true
+ *       type: "string" 
+ *    -  name: "content"
+ *       in: query
+ *       description: "post body"
+ *       required: true
+ *       type: "string"
+ *    -  name: "category"
+ *       in: query
+ *       description: "id of sub category"
+ *       required: true
+ *       type: "string" 
+ *    -  name: "createdby"
+ *       in: query
+ *       description: "user id "
+ *       required: true
+ *       type: "string"
+ *    -  name: "img"
+ *       in: query
+ *       description: "post img"
+ *       type: "string"
  *       schema:
  *         $ref: "#/definitions/post"
  *    responses:
@@ -72,6 +92,8 @@ var {data,validatedata}=require("../models/datascience")
  *        description: A successful request with the data of this new post send in json format
  * 
  */
+
+
 
 router.post("/create/web", upload.single('img'), async (req, res) => {
   const { title, content, category, createdby } = req.body
@@ -140,10 +162,30 @@ router.post("/create/web", upload.single('img'), async (req, res) => {
  *  post:
  *    description: Use to create new post in Competitive programming category
  *    parameters:
- *    -  in: body
- *       name: body
- *       description: "create new post"
+ *    -  name: "title"
+ *       in: query
+ *       description: "post title"
  *       required: true
+ *       type: "string" 
+ *    -  name: "content"
+ *       in: query
+ *       description: "post body"
+ *       required: true
+ *       type: "string"
+ *    -  name: "category"
+ *       in: query
+ *       description: "id of sub category"
+ *       required: true
+ *       type: "string" 
+ *    -  name: "createdby"
+ *       in: query
+ *       description: "user id "
+ *       required: true
+ *       type: "string"
+ *    -  name: "img"
+ *       in: query
+ *       description: "post img"
+ *       type: "string"
  *       schema:
  *         $ref: "#/definitions/post"
  *    responses:
@@ -220,10 +262,30 @@ router.post("/create/Competitiveprogramming", upload.single('img'), async (req, 
  *  post:
  *    description: Use to create new post in Open source category
  *    parameters:
- *    -  in: body
- *       name: body
- *       description: "create new post"
+ *    -  name: "title"
+ *       in: query
+ *       description: "post title"
  *       required: true
+ *       type: "string" 
+ *    -  name: "content"
+ *       in: query
+ *       description: "post body"
+ *       required: true
+ *       type: "string"
+ *    -  name: "category"
+ *       in: query
+ *       description: "id of sub category"
+ *       required: true
+ *       type: "string" 
+ *    -  name: "createdby"
+ *       in: query
+ *       description: "user id "
+ *       required: true
+ *       type: "string"
+ *    -  name: "img"
+ *       in: query
+ *       description: "post img"
+ *       type: "string"
  *       schema:
  *         $ref: "#/definitions/post"
  *    responses:
@@ -299,10 +361,30 @@ router.post("/create/Opensource", upload.single('img'), async (req, res) => {
  *  post:
  *    description: Use to create new post in Application development category
  *    parameters:
- *    -  in: body
- *       name: body
- *       description: "create new post"
+ *    -  name: "title"
+ *       in: query
+ *       description: "post title"
  *       required: true
+ *       type: "string" 
+ *    -  name: "content"
+ *       in: query
+ *       description: "post body"
+ *       required: true
+ *       type: "string"
+ *    -  name: "category"
+ *       in: query
+ *       description: "id of sub category"
+ *       required: true
+ *       type: "string" 
+ *    -  name: "createdby"
+ *       in: query
+ *       description: "user id "
+ *       required: true
+ *       type: "string"
+ *    -  name: "img"
+ *       in: query
+ *       description: "post img"
+ *       type: "string"
  *       schema:
  *         $ref: "#/definitions/post"
  *    responses:
@@ -379,10 +461,30 @@ router.post("/create/Applicationdevelopment", upload.single('img'), async (req, 
  *  post:
  *    description: Use to create new post in Machine learning category
  *    parameters:
- *    -  in: body
- *       name: body
- *       description: "create new post"
+ *    -  name: "title"
+ *       in: query
+ *       description: "post title"
  *       required: true
+ *       type: "string" 
+ *    -  name: "content"
+ *       in: query
+ *       description: "post body"
+ *       required: true
+ *       type: "string"
+ *    -  name: "category"
+ *       in: query
+ *       description: "id of sub category"
+ *       required: true
+ *       type: "string" 
+ *    -  name: "createdby"
+ *       in: query
+ *       description: "user id "
+ *       required: true
+ *       type: "string"
+ *    -  name: "img"
+ *       in: query
+ *       description: "post img"
+ *       type: "string"
  *       schema:
  *         $ref: "#/definitions/post"
  *    responses:
@@ -462,10 +564,30 @@ router.post("/create/Machinelearning", upload.single('img'), async (req, res) =>
  *  post:
  *    description: Use to create new post in Data science category
  *    parameters:
- *    -  in: body
- *       name: body
- *       description: "create new post"
+ *    -  name: "title"
+ *       in: query
+ *       description: "post title"
  *       required: true
+ *       type: "string" 
+ *    -  name: "content"
+ *       in: query
+ *       description: "post body"
+ *       required: true
+ *       type: "string"
+ *    -  name: "category"
+ *       in: query
+ *       description: "id of sub category"
+ *       required: true
+ *       type: "string" 
+ *    -  name: "createdby"
+ *       in: query
+ *       description: "user id "
+ *       required: true
+ *       type: "string"
+ *    -  name: "img"
+ *       in: query
+ *       description: "post img"
+ *       type: "string"
  *       schema:
  *         $ref: "#/definitions/post"
  *    responses:
@@ -544,10 +666,30 @@ router.post("/create/Datascience", upload.single('img'), async (req, res) => {
  *  post:
  *    description: Use to create new post in Miscellaneous fields category
  *    parameters:
- *    -  in: body
- *       name: body
- *       description: "create new post"
+ *    -  name: "title"
+ *       in: query
+ *       description: "post title"
  *       required: true
+ *       type: "string" 
+ *    -  name: "content"
+ *       in: query
+ *       description: "post body"
+ *       required: true
+ *       type: "string"
+ *    -  name: "category"
+ *       in: query
+ *       description: "id of sub category"
+ *       required: true
+ *       type: "string" 
+ *    -  name: "createdby"
+ *       in: query
+ *       description: "user id "
+ *       required: true
+ *       type: "string"
+ *    -  name: "img"
+ *       in: query
+ *       description: "post img"
+ *       type: "string"
  *       schema:
  *         $ref: "#/definitions/post"
  *    responses:

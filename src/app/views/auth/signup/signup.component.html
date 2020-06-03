@@ -3,50 +3,90 @@
         <div class="col-md-6 m-auto form_container bg-light">
             <div class=" blog_bg_lightgreen title pt-2" style="font-family: Montserrat, sans-serif">Sign Up</div>
            <!-- <h6 style="color:red; text-align:center; margin-bottom:2%">{{loginerror}}</h6> -->
-            <form class="mt-3" >
+            <form #userForm="ngForm" (ngSubmit)="onSubmit()" class="mt-3" >
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Your Name</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name">
+                    <label >Your Name</label>
+                    <input type="text" class="form-control" #name="ngModel" [class.is-invalid]=" name.invalid && name.touched" required
+                    class="form-control " [(ngModel)]=" signupModel.name"  name="name" placeholder="Enter Name">
+                     <small [class.d-none]="name.valid || name.untouched" class="text-danger">Name is required</small>
+
                   </div>
                   <div class="form-row">
                     <div class="form-group col-md-6">
-                      <label for="inputEmail4">Email</label>
-                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                      <label >Email</label>
+                      <input type="email" name="email" #email="ngModel" [class.is-invalid]=" email.invalid && email.touched" required
+                      class="form-control " [(ngModel)]=" signupModel.email" 
+                       placeholder="Email">
+                       <small [class.d-none]="email.valid || email.untouched" class="text-danger">email is required</small>
+
                     </div>
                     <div class="form-group col-md-6">
-                      <label for="inputPassword4">Password</label>
-                      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                      <label >Password</label>
+                      <input type="password"  #password="ngModel" [class.is-invalid]="password.invalid && password.touched"
+                      required class="form-control" [(ngModel)]=" signupModel.password"  name="password" 
+                      placeholder="Password">
+                      <small [class.d-none]="password.valid || password.untouched" class="text-danger">password is
+                        required</small>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="exampleFormControlFile1">Choose an image</label>
-                    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+
+                    <label >Choose an image</label>
+                    <input type="file"  class="form-control-file" (change)="fileChangeEvent($event)" />
+                  <div *ngIf="toggler">
+                    <h5>Crop Image</h5>
+                    <image-cropper 
+                    [imageChangedEvent]="imageChangedEvent" 
+                    [maintainAspectRatio]="true" 
+                    [aspectRatio]="4 / 4"
+                    [resizeToWidth]="256" 
+                    format="png" 
+                    (imageCropped)="imageCropped($event)" 
+                    (imageLoaded)="imageLoaded()"
+                    (cropperReady)="cropperReady()" 
+                    (loadImageFailed)="loadImageFailed()"></image-cropper>
+                    <div class="text-center col-md-4">
+                      <h5 style="text-align: left;">Preview</h5>
+                      <img [src]="croppedImage" />       
+                               </div>
                   </div>
+                  
+                </div>
+                
                  
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Choose Your Country</label>
-                    <select class="form-control">
+                    <label >Choose Your Country</label>
+                    <select class="form-control"   #country="ngModel" [class.is-invalid]="country.invalid && country.touched"
+                    required class="form-control" [(ngModel)]=" signupModel.country"  name="country" >
     
-                        <option>Default select</option>
-                      </select>                
+                        <option *ngFor="let product of products">{{product.name}}</option>
+                      </select>  
+                      <small [class.d-none]="country.valid || country.untouched" class="text-danger">country is
+                        required</small>              
                       </div>
                       <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Your Phone</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Phone">
+                            <label >Your Phone</label>
+                            <input type="text" class="form-control"  #phone="ngModel" [class.is-invalid]="phone.invalid && phone.touched"
+                            required class="form-control" name="phone" [(ngModel)]=" signupModel.phone"  placeholder="Enter Your Phone">
+                            <small [class.d-none]="phone.valid || phone.untouched" class="text-danger">phone is required</small>
+
                           </div>
                         <div class="form-group col-md-6">
-                            <label for="exampleInputEmail1">Your Age</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your Age">
+                            <label >Your Age</label>
+                            <input type="text" class="form-control" name="Age"  #Age="ngModel" [class.is-invalid]="Age.invalid && Age.touched"
+                            required  [(ngModel)]=" signupModel.Age" placeholder="Enter Your Age">
+                            <small [class.d-none]="Age.valid || Age.untouched" class="text-danger">Age is
+                              required</small>
                           </div>
                       </div>
                       <div class="mb-3">
                         <label for="validationTextarea">About Me</label>
-                        <textarea class="form-control " id="validationTextarea" placeholder="Required example textarea" required></textarea>
+                        <textarea class="form-control " name="About" #About="ngModel" [(ngModel)]=" signupModel.About" placeholder="About Me" required></textarea>
                         
                       </div>
                      
-                <button type="submit" class="btn blog_bg_pink mt-4 mb-2 float-left"><a  class="blog_btn blog_bg_pink cookie_btn">Create account</a></button>
+                <button type="submit"  [disabled]="userForm.form.invalid" class="btn blog_bg_pink mt-4 mb-2 float-left"><a  class="blog_btn blog_bg_pink cookie_btn">Create account</a></button>
               </form>
             
               
