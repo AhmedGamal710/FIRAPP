@@ -98,7 +98,10 @@
               "src/assets/countries.txt"
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.sass",
+              "../node_modules/bootstrap/dist/css/bootstrap.css",
+          "./assets/line-awesome.min.css"
+              
             ],
             "scripts": []
           }
