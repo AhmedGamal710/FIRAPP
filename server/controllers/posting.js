@@ -49,7 +49,7 @@ var {
 var {categories}=require("../models/category")
 var {web,validateweb}=require("../models/web")
 var {android,validateandroid}=require("../models/Applicationdevelopment")
-
+var auth=require("../middleware/auth")
 var {testing,validatetesting}=require("../models/Miscellaneousfields")
 var {opensource,validateopensource}=require("../models/opensource")
 var {competitive,validatecompetitive}=require("../models/competitive")
@@ -93,9 +93,7 @@ var {data,validatedata}=require("../models/datascience")
  * 
  */
 
-
-
-router.post("/create/web", upload.single('img'), async (req, res) => {
+router.post("/create/web", auth,upload.single('img'), async (req, res) => {
   const { title, content, category, createdby } = req.body
   if(req.file){
 
@@ -194,7 +192,7 @@ router.post("/create/web", upload.single('img'), async (req, res) => {
  * 
  */
 
-router.post("/create/Competitiveprogramming", upload.single('img'), async (req, res) => {
+router.post("/create/Competitiveprogramming", auth,upload.single('img'), async (req, res) => {
   const { title, content, category, createdby } = req.body
   if(req.file){
 
@@ -294,7 +292,7 @@ router.post("/create/Competitiveprogramming", upload.single('img'), async (req, 
  * 
  */
 
-router.post("/create/Opensource", upload.single('img'), async (req, res) => {
+router.post("/create/Opensource", auth,upload.single('img'), async (req, res) => {
   const { title, content, category, createdby } = req.body
   if(req.file){
 
@@ -393,7 +391,7 @@ router.post("/create/Opensource", upload.single('img'), async (req, res) => {
  * 
  */
 
-router.post("/create/Applicationdevelopment", upload.single('img'), async (req, res) => {
+router.post("/create/Applicationdevelopment", auth,upload.single('img'), async (req, res) => {
   const { title, content, category, createdby } = req.body
   if(req.file){
 
@@ -493,7 +491,7 @@ router.post("/create/Applicationdevelopment", upload.single('img'), async (req, 
  * 
  */
 
-router.post("/create/Machinelearning", upload.single('img'), async (req, res) => {
+router.post("/create/Machinelearning",auth, upload.single('img'), async (req, res) => {
   const { title, content, category, createdby } = req.body
   if(req.file){
 
@@ -596,7 +594,7 @@ router.post("/create/Machinelearning", upload.single('img'), async (req, res) =>
  * 
  */
 
-router.post("/create/Datascience", upload.single('img'), async (req, res) => {
+router.post("/create/Datascience",auth, upload.single('img'), async (req, res) => {
   const { title, content, category, createdby } = req.body
   if(req.file){
 
@@ -698,7 +696,7 @@ router.post("/create/Datascience", upload.single('img'), async (req, res) => {
  * 
  */
 
-router.post("/create/Miscellaneousfields", upload.single('img'), async (req, res) => {
+router.post("/create/Miscellaneousfields",auth, upload.single('img'), async (req, res) => {
   const { title, content, category, createdby } = req.body
   if(req.file){
 
@@ -783,7 +781,7 @@ router.post("/create/Miscellaneousfields", upload.single('img'), async (req, res
  * 
  */
 
-router.delete("/delete/:id",parseUrlencoded, function (req, res) {
+router.delete("/delete/:id",auth,parseUrlencoded, function (req, res) {
 
   user.findByIdAndUpdate(
     req.body.userid, { $pull: { "post": req.params.id } }, { safe: true, upsert: true },
@@ -837,7 +835,7 @@ router.delete("/delete/:id",parseUrlencoded, function (req, res) {
  * 
  */
 
-router.post("/update/:id", upload.single('img'), async (req, res) => {
+router.post("/update/:id", auth,upload.single('img'), async (req, res) => {
 
   const {  title, content, category,img } = req.body
   if(req.file){
@@ -1243,7 +1241,7 @@ else{
 
 
 
-router.put('/like/:id', parseUrlencoded,(req, res) => {
+router.put('/like/:id', auth,parseUrlencoded,(req, res) => {
   // Check if id was passed provided in request body
   if (!req.body.id) {
     res.json({ success: false, message: 'No id was provided.' }); // Return error message
@@ -1328,7 +1326,7 @@ router.put('/like/:id', parseUrlencoded,(req, res) => {
 
 
 
-router.post('/comment/:id', parseUrlencoded,(req, res) => {
+router.post('/comment/:id',auth, parseUrlencoded,(req, res) => {
   // Check if comment was provided in request body
   if (!req.body.comment) {
     res.json({ success: false, message: 'No comment provided' }); // Return error message

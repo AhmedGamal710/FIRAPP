@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
 import { PostsRoutingModule } from './posts-routing.module';
-import { ListPostsComponent } from './list-posts/list-posts.component';
-
+import { ListNotapprovedComponent } from './not approved/list-notapproved/list-notapproved.component';
 
 @NgModule({
-  declarations: [ ListPostsComponent],
+  declarations: [ ListNotapprovedComponent],
   imports: [
     CommonModule,
-    PostsRoutingModule
+    PostsRoutingModule,
   ]
 })
 export class PostsModule { }

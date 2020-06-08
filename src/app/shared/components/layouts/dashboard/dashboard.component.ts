@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 declare var $:any;
 
 @Component({
@@ -8,7 +9,9 @@ declare var $:any;
 })
 export class DashboardComponent implements OnInit {
   togglerr=true
-  constructor() { }
+  status:boolean=true
+  status2:boolean=false
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -18,5 +21,16 @@ export class DashboardComponent implements OnInit {
     $("#sidebarCollapse").on("click", function () {
       $("#sidebar").toggleClass("active");
     })
+  }
+  change(){
+
+      this.status=false;
+      this.status2=true
+      this.router.navigate(["admin/posts"])
+  }
+  change2(){
+
+    this.status=true;
+    this.status2=false
   }
 }

@@ -47,6 +47,7 @@ var {
     user
   } = require("../models/user");
  var{post}=require("../models/post")
+ var auth=require("../middleware/auth")
 
   /**
  * @swagger
@@ -151,7 +152,7 @@ var {
  *      '200':
  *        description: A successful request with the data of user send in json format
  */
-  router.get("/account/:id", async (req, res) => {
+  router.get("/account/:id",auth, async (req, res) => {
 
     let user_account = await user.findOne({
       _id: req.params.id
@@ -205,7 +206,7 @@ var {
  * 
  */
 
-router.post("/update/:id", upload.single('img'), async (req, res) => {
+router.post("/update/:id", auth,upload.single('img'), async (req, res) => {
 
   const {  name, phone, country,img,Age,About } = req.body
   if(req.file){
@@ -247,7 +248,7 @@ else{
  * 
  */
 
-router.delete("/comment/delete/:id",parseUrlencoded,async(req,res)=>{
+router.delete("/comment/delete/:id",auth,parseUrlencoded,async(req,res)=>{
  
   post.findByIdAndUpdate(
     req.body.postid, { $pull: { "comments": {commentator: req.body.userid,_id:req.params.id } } }, { safe: true, upsert: true },
@@ -278,7 +279,7 @@ router.delete("/comment/delete/:id",parseUrlencoded,async(req,res)=>{
 
 
 
-router.post("/comment/update/:id",parseUrlencoded,async(req,res)=>{
+router.post("/comment/update/:id",auth,parseUrlencoded,async(req,res)=>{
 
 
   post.update(
@@ -307,7 +308,7 @@ res.json("done")
  * 
  */
 
-router.get("/list/posts/:id",function(req,res){
+router.get("/list/posts/:id",auth,function(req,res){
 
   post.find({createdby:req.params.id, isapproved:true},function(err,data){
     if(err){
