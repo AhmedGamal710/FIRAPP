@@ -14,7 +14,11 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RouterModule,
+<<<<<<< HEAD
     FormsModule
+=======
+
+>>>>>>> fe6d9014d8cd214104cedfebe14864dda2625d06
   ]
 })
 export class LayoutsModule { }

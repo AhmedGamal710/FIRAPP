@@ -23,6 +23,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ImageCropperModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+<<<<<<< HEAD
+=======
+ 
+    
+    // MatTableDataSource
+>>>>>>> fe6d9014d8cd214104cedfebe14864dda2625d06
   ],
   providers: [],
   bootstrap: [AppComponent]

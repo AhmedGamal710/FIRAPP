@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListPostsComponent } from './list-posts/list-posts.component';
+import { ListNotapprovedComponent } from './not approved/list-notapproved/list-notapproved.component';
+;
 
 
 const routes: Routes = [
 
 {
   path:'',
-  component:ListPostsComponent
+  component:ListNotapprovedComponent
 }
 
 

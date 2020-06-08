@@ -27,7 +27,7 @@ var {opensource,validateopensource}=require("../models/opensource")
 var {competitive,validatecompetitive}=require("../models/competitive")
 var {machine,validatemachine}=require("../models/machinelearning")
 var {data,validatedata}=require("../models/datascience")
-
+var admin=require("../middleware/admin")
 
 
 
@@ -47,7 +47,7 @@ var {data,validatedata}=require("../models/datascience")
 
 
 
-router.delete("/delete/user/:id", function (req, resp) {
+router.delete("/delete/user/:id", admin,function (req, resp) {
 
   mongoose.model("user").findOneAndRemove({
     _id: req.params.id
@@ -73,7 +73,7 @@ router.delete("/delete/user/:id", function (req, resp) {
  */
 
 
-router.delete("/delete/post/:id", function (req, resp) {
+router.delete("/delete/post/:id", admin,function (req, resp) {
 
   mongoose.model("post").findOneAndRemove({
     _id: req.params.id
@@ -105,7 +105,7 @@ router.delete("/delete/post/:id", function (req, resp) {
  */
 
 
-router.post("/add/admin", parseUrlencoded, async (req, res) => {
+router.post("/add/admin",admin, parseUrlencoded, async (req, res) => {
   var {
     error
   } = validateadmin(req.body);
@@ -135,7 +135,7 @@ router.post("/add/admin", parseUrlencoded, async (req, res) => {
  * 
  */
 
-router.get("/account/:id", async (req, res) => {
+router.get("/account/:id", admin,async (req, res) => {
 
   let adminspec = await admin.findOne({
     _id: req.params.id
@@ -159,7 +159,7 @@ router.get("/account/:id", async (req, res) => {
  */
 
 
-router.get("/user/list", async (req, res) => {
+router.get("/user/list",admin, async (req, res) => {
   let result = await user.find({});
   res.json(result)
 
@@ -188,7 +188,7 @@ router.get("/user/list", async (req, res) => {
  * 
  */
 
-router.post("/add/category/web", parseUrlencoded,async(req,res)=>{
+router.post("/add/category/web",admin, parseUrlencoded,async(req,res)=>{
 
   var {
     error
@@ -225,7 +225,7 @@ router.post("/add/category/web", parseUrlencoded,async(req,res)=>{
  * 
  */
 
-router.post("/add/category/Applicationdevelopment", parseUrlencoded,async(req,res)=>{
+router.post("/add/category/Applicationdevelopment",admin, parseUrlencoded,async(req,res)=>{
 
   var {
     error
@@ -263,7 +263,7 @@ router.post("/add/category/Applicationdevelopment", parseUrlencoded,async(req,re
  * 
  */
 
-router.post("/add/category/Miscellaneousfields", parseUrlencoded,async(req,res)=>{
+router.post("/add/category/Miscellaneousfields", admin ,parseUrlencoded,async(req,res)=>{
 
   var {
     error
@@ -302,7 +302,7 @@ router.post("/add/category/Miscellaneousfields", parseUrlencoded,async(req,res)=
  * 
  */
 
-router.post("/add/category/Competitiveprogramming", parseUrlencoded,async(req,res)=>{
+router.post("/add/category/Competitiveprogramming",admin , parseUrlencoded,async(req,res)=>{
 
   var {
     error
@@ -341,7 +341,7 @@ router.post("/add/category/Competitiveprogramming", parseUrlencoded,async(req,re
  * 
  */
 
-router.post("/add/category/Datascience", parseUrlencoded,async(req,res)=>{
+router.post("/add/category/Datascience",admin , parseUrlencoded,async(req,res)=>{
 
   var {
     error
@@ -379,7 +379,7 @@ router.post("/add/category/Datascience", parseUrlencoded,async(req,res)=>{
  * 
  */
 
-router.post("/add/category/Machinelearning", parseUrlencoded,async(req,res)=>{
+router.post("/add/category/Machinelearning",admin , parseUrlencoded,async(req,res)=>{
 
   var {
     error
@@ -420,7 +420,7 @@ router.post("/add/category/Machinelearning", parseUrlencoded,async(req,res)=>{
  * 
  */
 
-router.post("/add/category/Opensource", parseUrlencoded,async(req,res)=>{
+router.post("/add/category/Opensource",admin , parseUrlencoded,async(req,res)=>{
 
   var {
     error
@@ -609,7 +609,7 @@ router.get("/categories/Opensource",async(req,res)=>{
  */
 
 
-router.delete("/delete/category/web/:id", function (req, resp) {
+router.delete("/delete/category/web/:id", admin ,function (req, resp) {
 
   mongoose.model("web").findOneAndRemove({
     _id: req.params.id
@@ -636,7 +636,7 @@ router.delete("/delete/category/web/:id", function (req, resp) {
  */
 
 
-router.delete("/delete/category/Applicationdevelopment/:id", function (req, resp) {
+router.delete("/delete/category/Applicationdevelopment/:id",admin , function (req, resp) {
 
   mongoose.model("android").findOneAndRemove({
     _id: req.params.id
@@ -662,7 +662,7 @@ router.delete("/delete/category/Applicationdevelopment/:id", function (req, resp
  */
 
 
-router.delete("/delete/category/Miscellaneousfields/:id", function (req, resp) {
+router.delete("/delete/category/Miscellaneousfields/:id",admin , function (req, resp) {
 
   mongoose.model("testing").findOneAndRemove({
     _id: req.params.id
@@ -688,7 +688,7 @@ router.delete("/delete/category/Miscellaneousfields/:id", function (req, resp) {
  */
 
 
-router.delete("/delete/category/Competitiveprogramming/:id", function (req, resp) {
+router.delete("/delete/category/Competitiveprogramming/:id",admin , function (req, resp) {
 
   mongoose.model("competitive").findOneAndRemove({
     _id: req.params.id
@@ -715,7 +715,7 @@ router.delete("/delete/category/Competitiveprogramming/:id", function (req, resp
  */
 
 
-router.delete("/delete/category/Datascience/:id", function (req, resp) {
+router.delete("/delete/category/Datascience/:id",admin , function (req, resp) {
 
   mongoose.model("data").findOneAndRemove({
     _id: req.params.id
@@ -741,7 +741,7 @@ router.delete("/delete/category/Datascience/:id", function (req, resp) {
  */
 
 
-router.delete("/delete/category/Machinelearning/:id", function (req, resp) {
+router.delete("/delete/category/Machinelearning/:id",admin , function (req, resp) {
 
   mongoose.model("machine").findOneAndRemove({
     _id: req.params.id
@@ -768,7 +768,7 @@ router.delete("/delete/category/Machinelearning/:id", function (req, resp) {
  */
 
 
-router.delete("/delete/category/Opensource/:id", function (req, resp) {
+router.delete("/delete/category/Opensource/:id",admin , function (req, resp) {
 
   mongoose.model("opensource").findOneAndRemove({
     _id: req.params.id
@@ -811,7 +811,7 @@ router.delete("/delete/category/Opensource/:id", function (req, resp) {
  */
 
 
-router.post("/update/category/web/:id",parseUrlencoded,function(req,res){
+router.post("/update/category/web/:id",admin ,parseUrlencoded,function(req,res){
 
 
   web.update({_id:req.params.id},req.body,function(err,data){
@@ -839,7 +839,7 @@ router.post("/update/category/web/:id",parseUrlencoded,function(req,res){
  */
 
 
-router.post("/update/category/Applicationdevelopment/:id",parseUrlencoded,function(req,res){
+router.post("/update/category/Applicationdevelopment/:id",admin ,parseUrlencoded,function(req,res){
 
 
   android.update({_id:req.params.id},req.body,function(err,data){
@@ -866,7 +866,7 @@ router.post("/update/category/Applicationdevelopment/:id",parseUrlencoded,functi
  */
 
 
-router.post("/update/category/Miscellaneousfields/:id",parseUrlencoded,function(req,res){
+router.post("/update/category/Miscellaneousfields/:id",admin ,parseUrlencoded,function(req,res){
 
 
   testing.update({_id:req.params.id},req.body,function(err,data){
@@ -895,7 +895,7 @@ router.post("/update/category/Miscellaneousfields/:id",parseUrlencoded,function(
  */
 
 
-router.post("/update/category/Competitiveprogramming/:id",parseUrlencoded,function(req,res){
+router.post("/update/category/Competitiveprogramming/:id",admin ,parseUrlencoded,function(req,res){
 
 
   competitive.update({_id:req.params.id},req.body,function(err,data){
@@ -924,7 +924,7 @@ router.post("/update/category/Competitiveprogramming/:id",parseUrlencoded,functi
  */
 
 
-router.post("/update/category/Datascience/:id",parseUrlencoded,function(req,res){
+router.post("/update/category/Datascience/:id",admin ,parseUrlencoded,function(req,res){
 
 
   data.update({_id:req.params.id},req.body,function(err,data){
@@ -954,7 +954,7 @@ router.post("/update/category/Datascience/:id",parseUrlencoded,function(req,res)
  */
 
 
-router.post("/update/category/Machinelearning/:id",parseUrlencoded,function(req,res){
+router.post("/update/category/Machinelearning/:id",admin ,parseUrlencoded,function(req,res){
 
 
   machine.update({_id:req.params.id},req.body,function(err,data){
@@ -982,7 +982,7 @@ router.post("/update/category/Machinelearning/:id",parseUrlencoded,function(req,
  */
 
 
-router.post("/update/category/Opensource/:id",parseUrlencoded,function(req,res){
+router.post("/update/category/Opensource/:id",admin ,parseUrlencoded,function(req,res){
 
 
   opensource.update({_id:req.params.id},req.body,function(err,data){
@@ -1018,7 +1018,7 @@ router.post("/update/category/Opensource/:id",parseUrlencoded,function(req,res){
 
 
 
-router.delete("/comment/delete/:id",parseUrlencoded,function(req,res){
+router.delete("/comment/delete/:id",admin ,parseUrlencoded,function(req,res){
  
   post.findByIdAndUpdate(
     req.body.id, { $pull: { "comments": { _id: req.params.id } } }, { safe: true, upsert: true },
@@ -1045,7 +1045,7 @@ router.delete("/comment/delete/:id",parseUrlencoded,function(req,res){
  */
 
 
-router.post("/approve/post/:id",async(req,res)=>{
+router.post("/approve/post/:id",admin ,async(req,res)=>{
 
   post.update({_id:req.params.id},{isapproved:true},function(err,data){
     if(err){
@@ -1068,7 +1068,7 @@ router.post("/approve/post/:id",async(req,res)=>{
  *        description: A successful request with the data of all not approved posts 
  * 
  */
-router.get("/list/notapproved",function(req,res){
+router.get("/list/notapproved",admin ,function(req,res){
   post.find({isapproved:false},function(err,data){
     res.json(data)
   })

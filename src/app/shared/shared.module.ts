@@ -6,8 +6,13 @@ import { LayoutsModule } from './components/layouts/layouts.module'
   declarations: [],
   imports: [
     CommonModule,
+<<<<<<< HEAD
   
     LayoutsModule
+=======
+    LayoutsModule,
+   
+>>>>>>> fe6d9014d8cd214104cedfebe14864dda2625d06
   ]
 })
 export class SharedModule { }
