@@ -17,11 +17,8 @@ const routes: Routes = [
       }
     ]
   },
-
-
-
   {
-    path: 'auth',
+    path: '',
     component: AuthComponent,
     children: [
       {
@@ -30,9 +27,6 @@ const routes: Routes = [
       }
     ]
   }
-
-
-
 ];
 
 @NgModule({
