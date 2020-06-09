@@ -1,2 +1,13 @@
+<app-navbar></app-navbar>
 <p>home works!</p>
-<router-outlet></router-outlet>
+
+<div *ngFor="let post of postinterface">
+    {{post.name}}
+    {{post.createdat}}
+    {{post.likes}}
+    {{post.title}}
+    {{post.content}}
+    
+</div>
+
+<app-header></app-header>

@@ -17,6 +17,7 @@ export class AuthService {
 
   }
   signup(formData){
+    
     return this._http.post<any>("http://localhost:3000/xlarge/user/signup", formData);
 
   }

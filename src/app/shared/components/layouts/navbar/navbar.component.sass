@@ -1,0 +1,159 @@
+.trainding
+    height: 50px
+    .left
+        width: 17%
+        height: 100%
+        padding-left: 35px
+        background: #FF3359
+        color: #fff
+        float: left
+        border-radius: 0px 0px 25px 0px
+        h5 
+            font-size: 18px
+            font-weight: 500
+            margin-top: 10px
+            margin-left: 20px
+    .content
+        width: 50%
+        height: 100%
+        background: black
+        float: left
+        color: #fff
+        border-radius: 0px 0px 0px 22px
+        position: relative
+        &::after
+            content: ""
+            position: absolute
+            height: 50%
+            right: 0px
+            top: 10px
+            width: 2px
+            border-left: 1px solid #8f8f8f
+        p 
+            margin-top: 10px
+            margin-left: 20px
+            i 
+                color: #FF3359
+                margin-right: 10px
+    .calinder
+        width: 17%
+        height: 100%
+        background: black
+        float: left
+        color: #fff
+        border-radius: 0
+        position: relative
+        &::after
+            content: ""
+            position: absolute
+            height: 50%
+            right: 0px
+            top: 10px
+            width: 2px
+            border-left: 1px solid #8f8f8f
+
+        p 
+            margin-top: 10px
+            margin-left: 20px
+            i 
+                color: #FF3359
+                margin-right: 10px
+    .temperature
+        width: 16%
+        height: 100%
+        background: black
+        float: left
+        color: #fff
+        border-radius: 0
+        position: relative
+        p 
+            margin-top: 10px
+            margin-left: 20px
+            i 
+                color: #FF3359
+                margin-right: 10px
+.navbar
+    padding-left: 50px
+    padding-top: 20px
+    .collapse
+        ul 
+            li 
+                a
+                        color: black
+                        font-size: 18px
+                        font-weight: 500
+                        top: 10px
+                        position: relative
+                        
+                        &:hover
+                            &::before
+                                transition: all 1s
+                                content: ""
+                                position: absolute
+                                border-bottom: 2px solid #FF6A82
+                                left: 15px
+                                top: 55px
+                                height: 1px
+                                width: 50%
+                                animation: 1s ease infinite pulse
+
+            .active
+                    a 
+                        &::before
+                            content: ""
+                            position: absolute
+                            border-bottom: 2px solid #FF6A82
+                            left: 15px
+                            top: 65px
+                            height: 1px
+                            width: 50%                                              
+        form
+            position: relative
+            left: 60px
+            &::after
+                    position: absolute
+                    content: ""
+                    left: 10px
+                    top: 21px
+                    width: 2px
+                    height: 50%
+                    border-left: 1px solid #a5a5a5
+            i
+                color: #FF6A82
+                position: absolute
+                left: 350px
+
+            input
+                border: none
+                border: none
+                height: 50px
+                width: 350px !important
+                background: none
+        .auth
+            li
+                a
+                    top: -2px
+                    width: 50px
+                    background: #FF6A82
+                    border-radius: 50%
+                    height: 50px
+                    margin-left: -30px
+                    img 
+                        
+                        width: 100%
+                        
+        
+                    
+.notifications
+    color: #fff
+    background: #FF6A82
+    border-radius: 27px 18px 23px 1px
+    position: relative
+    top: -50px
+    left: 40px
+    font-weight: 700
+    padding: 3px
+    font-size: 12px
+    margin-right: -30px
+    
+    

@@ -1,14 +1,22 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { HttpClient, HttpHeaders} from "@angular/common/http";
 import {Post} from '../classes/post'
+
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class PostsService {
 
   constructor(private _http: HttpClient) { }
 //   let headers = new Headers();
 // headers.append('x_auth_token_admin', localStorage.getItem("token"));
+category():Observable<any> {
+  return this._http.get("http://localhost:3000/xlarge/admin/categories/web");
+}
   listnotapproved(){
     return this._http.get(
       "http://localhost:3000/xlarge/admin/list/notapproved", {

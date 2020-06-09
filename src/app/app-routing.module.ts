@@ -5,6 +5,8 @@ import { DashboardComponent } from './shared/components/layouts/dashboard/dashbo
 import { AuthComponent } from './shared/components/layouts/auth/auth.component';
 import { PostsModule } from './views/posts/posts.module';
 import { AdminsModule } from './views/dashboard views/admins/admins.module';
+import { UsersModule } from './views/dashboard views/users/users.module';
+import { CategoriesModule } from './views/dashboard views/categories/categories.module';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -19,14 +21,21 @@ const routes: Routes = [
      {
         path: 'admins',
         loadChildren: () => AdminsModule
+      },
+      {
+        path:'users',
+        loadChildren: () => UsersModule
+
+      },{
+        path:'categories',
+        loadChildren: () => CategoriesModule
+
+
       }
     ]
   },
-
-
-
   {
-    path: 'auth',
+    path: '',
     component: AuthComponent,
     children: [
       {
@@ -35,9 +44,6 @@ const routes: Routes = [
       }
     ]
   }
-
-
-
 ];
 
 @NgModule({

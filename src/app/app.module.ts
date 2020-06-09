@@ -8,6 +8,10 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PostsModule } from './views/posts/posts.module';
+import { AdminsModule } from './views/dashboard views/admins/admins.module';
+import { UsersModule } from './views/dashboard views/users/users.module';
+import { LayoutsModule } from './shared/components/layouts/layouts.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ImageCropperModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    PostsModule,
+    UsersModule,
+    AdminsModule,
+    LayoutsModule
  
     
     // MatTableDataSource
