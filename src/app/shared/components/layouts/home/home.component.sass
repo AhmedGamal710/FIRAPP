@@ -1,0 +1,333 @@
+$margin: 50px
+$BlackColor:#F3F4F7
+$backgroundOrange:#fa9324
+%titleStyle
+    width: 145px
+    padding: 14px
+    height: $margin
+    font-size: 17px
+    position: relative
+    border-radius: 18px 0px
+    color: white
+    top: -10px
+// start home
+.home
+    overflow: hidden
+    .scrolling
+        overflow-y: scroll        
+    .row 
+       
+        a 
+            color: black 
+            text-decoration: none
+                        
+        .background
+            height: $margin + 720
+            overflow: hidden
+            img
+                width: 100%
+                height: 100%
+                transition: all 1s
+                &:hover
+                    transform: scale(1.3)
+            .postOne
+                padding: $margin - 15
+                position: absolute
+                background: #ffffff
+                height: $margin + 240
+                width: $margin + 480
+                z-index: 2
+                left: $margin + 50
+                top: $margin + 350 
+                box-shadow: -2px 2px 17px $BlackColor
+                padding-left: 55px
+                h3
+                    font-weight: 800
+                    font-size: 33px
+                img 
+                    width: $margin - 15
+                    height:  $margin - 15
+                    border-radius: 50%
+                p
+                    margin-top: 15px
+                    margin-left: 10px
+                    span
+                        color: #FF3657
+                        font-weight: bold
+                .date
+                    font-weight: 500
+                    font-size: 16px
+                    margin-left: 0
+                    span 
+                        font-weight: 500
+                .name
+                    margin-top: 25px
+                    position: relative
+                    left: 14px
+                    font-size: 15px
+                    color: #888
+                .like
+                    position: relative
+                    left: 25px
+                    background: blue
+                    border-radius: 8px 8px 8px 0px
+                    padding: 4px
+                    padding-left: 15px
+                    padding-right: 10px
+                    font-size: 12px
+                    color: white
+                    font-weight: 500
+                    a 
+                        text-decoration: none
+                        color: #ffffff
+
+                        text-decoration: none
+                    i
+                        position: relative
+                        left: -5px
+                        color: #ffffff
+                .comment
+                    @extend .like
+                    background: #FF3657
+                    left: $margin - 20
+
+                .nextSport
+                    font-size: $margin - 30
+                    margin-top: $margin - 25
+                    position: relative
+                    &::after
+                        content: ""
+                        position: absolute
+                        left: -8px
+                        top: -8px
+                        height: 35px
+                        border-left: 4px solid #FF3657
+                    .left
+                        margin-left: 10px
+                        margin-right: 10px
+                        transition: all .5s
+                        &:hover
+                            color: $backgroundOrange
+                    .right
+                        &:hover
+                            color: $backgroundOrange
+        .Sports
+            width: $margin + 390
+            height: $margin + 195
+            margin-bottom: 17px
+            overflow: hidden
+            &:hover
+                img
+                    background: #FF3657 
+                    transform: rotate(15deg) scale(1.3)
+            
+            img 
+                width: 100%
+                height: 100%
+                transition: all .5s
+                
+                
+            .content
+                position: relative
+                top: -151px
+                height: 150px
+                padding-top: 48px
+                padding-left: 10px
+                min-width: 100%
+                background: linear-gradient(#ededed00,#41414163,#202020)
+                
+                p 
+                    font-weight: bold
+                    color: #fff 
+                    font-weight: 500
+                    font-size: 17px
+                img 
+                    width: $margin - 15
+                    height:  $margin - 15
+                    border-radius: 50%
+
+                .name
+                    font-size: $margin - 30
+                    margin-top: $margin - 25
+                    font-weight: 500
+                    color: #fff
+                    margin-left: 10px
+                .like
+                    position: relative
+                    left: 25px
+                    top: -5px
+                    background: blue
+                    border-radius: 8px 8px 8px 0px
+                    padding: 4px
+                    padding-left: 15px
+                    padding-right: 10px
+                    font-size: 12px
+                    color: white
+                    font-weight: 500
+                    a 
+                        
+                        color: #ffffff
+                        text-decoration: none
+                    i
+                        position: relative
+                        left: -5px
+                        color: #ffffff
+                .comment
+                    @extend .like
+                    background: #FF3657
+                    left: $margin - 20
+// start category
+.category
+    background: $BlackColor
+    .big-post
+        .Sports
+            width: 90%
+            position: relative
+            height: 85%
+            overflow: hidden
+            left: 93px
+    .bottom-row
+        margin-left: -34px
+        margin-top: -60px
+        .Sports
+            width: 90%
+            position: relative
+            left: 125px
+    .Sports
+            width: 100%
+            height: $margin + 195
+            margin-bottom: 17px
+            overflow: hidden
+            &:hover
+                img
+                    background: #FF3657 
+                    transform: rotate(15deg) scale(1.3)
+            img 
+                width: 100%
+                height: 100%
+                transition: all .5s
+
+            .content
+                position: relative
+                top: -151px
+                height: 150px
+                padding-top: 48px
+                padding-left: 10px
+                min-width: 100%
+                background: linear-gradient(#ededed00,#41414163,#202020)
+                p 
+                    font-weight: bold
+                    color: #fff 
+                    font-weight: 500
+                    font-size: 17px
+                img 
+                    width: $margin - 15
+                    height:  $margin - 15
+                    border-radius: 50%
+
+                .name
+                    font-size: $margin - 30
+                    margin-top: $margin - 25
+                    font-weight: 500
+                    color: #fff
+                    margin-left: 10px
+                .like
+                    position: relative
+                    left: 25px
+                    top: -5px
+                    background: blue
+                    border-radius: 8px 8px 8px 0px
+                    padding: 4px
+                    padding-left: 15px
+                    padding-right: 10px
+                    font-size: 12px
+                    color: white
+                    font-weight: 500
+                    a 
+                        color: #ffffff
+                        text-decoration: none
+                    i
+                        position: relative
+                        left: -5px
+                        color: #ffffff
+                .comment
+                    @extend .like
+                    background: #FF3657
+                    left: $margin - 20
+    padding-top: $margin
+    .head
+        background: #fff
+        width: 91%
+        height: 50px
+        position: relative
+        left: 93px
+        padding-right: 40px
+        h3 
+            float: left
+            background: $backgroundOrange
+            @extend %titleStyle
+        ul
+            float: right
+            a 
+                text-decoration: none
+                color: black
+                text-decoration: none
+                transition: all .5s
+                &:hover
+                    color: $backgroundOrange
+            li
+                list-style: none
+                float: left
+                padding-left: 41px
+                font-size: 20px
+                padding-top: 15px
+                height: 33px
+            i 
+                margin-left: 10px
+                font-size: 20px
+                margin-right: 0px
+                margin-top: 15px
+                transition: all .5s
+                &:hover
+                    color: $backgroundOrange
+            .active
+                color: $backgroundOrange
+.right-bar
+    .connect
+        background: #fff !important
+        height: 300px
+        width: 75%
+        h4
+            background: #FF3657
+            width: 45%
+            padding: 10px
+            color: white
+            font-weight: 500
+            padding-left:27px
+            border-radius: 15px 0
+        .items
+            width: 100%
+            padding-left: 32px
+            a
+                height: 20px
+                border-radius: 50%
+                overflow: hidden
+            @each $var,$color in (facebook, #3B5999) (twitter, #55ACEE) (youtube, #BD081C) (instagram, #E4405F)(pinterest, #BD081C) (rss,#fa9324 )
+                .icon-#{$var}
+                    color: $color 
+                i
+                    position: relative
+                    left: 8px
+                    font-size: 35px
+                    bottom: -5px
+            p 
+                font-size: 18px
+                font-weight: 500
+                margin-bottom: 0px
+                margin-top: 10px
+            span 
+                font-size: 13px
+                font-weight: 300
+            .twitter, .facebook, .youtube, .instagram, .pinterest, .rss
+                width: 33%
+                float: left                

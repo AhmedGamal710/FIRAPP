@@ -6,7 +6,6 @@ import { LayoutsModule } from './components/layouts/layouts.module'
   declarations: [],
   imports: [
     CommonModule,
-  
     LayoutsModule
    
   ]
