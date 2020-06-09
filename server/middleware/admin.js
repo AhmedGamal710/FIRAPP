@@ -5,7 +5,7 @@ var {
     admin
   } = require("../models/admin");
   
-function auth(req, resp, next) {
+function adminauth(req, resp, next) {
   var token = req.header('x_auth_token_admin');
   if (!token) {
     resp.status(401).send("you are not logged in .")
@@ -31,4 +31,4 @@ function auth(req, resp, next) {
   }
 
 }
-module.exports = auth;
+module.exports = adminauth;

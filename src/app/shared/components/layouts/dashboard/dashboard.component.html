@@ -12,15 +12,15 @@
             </div>
 
             <ul class="list-unstyled components ">
-                <li class="active">
-                    <a href="#">
+                <li class="active" >
+                    <a [routerLink]="['approved']" >
                         <span> <i class="fas fa-align-left"></i> Posts </span>
                         
                     </a>
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a [routerLink]="['admins']">
                         <span> <i class="fas fa-user-shield"></i> Admins </span>
                     </a>
                 </li>
@@ -75,17 +75,7 @@
 
         <!--content-->
         <div class="content">
-            <div class="row" style="border: 1px solid rgb(231, 43, 131);">
-
-                    <div class="col-md-6  content_header header_first" (click)="change2()" [ngClass]="status ? 'light' : 'dark'">
          
-                        <a >APPROVED</a>
-                    </div>
-                    <div class="col-md-6 content_header header_second " (click)="change()" [ngClass]="status2 ? 'light' : 'dark'">
-         <a >NOT APPROVED</a>
-                    </div>
-
-            </div>
 <router-outlet></router-outlet>
           
         </div>

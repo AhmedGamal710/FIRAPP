@@ -4,6 +4,7 @@ import { HomeComponent } from './shared/components/layouts/home/home.component';
 import { DashboardComponent } from './shared/components/layouts/dashboard/dashboard.component';
 import { AuthComponent } from './shared/components/layouts/auth/auth.component';
 import { PostsModule } from './views/posts/posts.module';
+import { AdminsModule } from './views/dashboard views/admins/admins.module';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -12,8 +13,12 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: 'posts',
+        path: '',
         loadChildren: () => PostsModule
+      },
+     {
+        path: 'admins',
+        loadChildren: () => AdminsModule
       }
     ]
   },

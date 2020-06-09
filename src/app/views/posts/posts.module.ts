@@ -5,9 +5,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { PostsRoutingModule } from './posts-routing.module';
 import { ListNotapprovedComponent } from './not approved/list-notapproved/list-notapproved.component';
+import { ListApprovedComponent } from './approved/list-approved/list-approved.component';
 
 @NgModule({
-  declarations: [ ListNotapprovedComponent],
+  declarations: [ ListNotapprovedComponent, ListApprovedComponent],
   imports: [
     CommonModule,
     PostsRoutingModule,

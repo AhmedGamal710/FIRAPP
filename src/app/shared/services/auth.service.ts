@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { HttpClient, HttpHeaders} from "@angular/common/http";
 import {Login} from '../classes/login';
 import {Signup} from "../classes/signup";
+import { Admin } from '../classes/admin';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,16 @@ export class AuthService {
   getCountries(){
 
     return this._http.get('../../views/auth/countries.txt', {responseType: 'text'})
+
+  }
+
+  addadmin(_Admin:Admin){
+  
+    return this._http.post<any>("http://localhost:3000/xlarge/admin/add/admin",_Admin, {
+      headers: new HttpHeaders({
+        'x_auth_token_admin': localStorage.getItem("token")
+      })
+    });
 
   }
 

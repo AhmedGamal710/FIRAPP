@@ -9,11 +9,11 @@ declare var $:any;
 })
 export class DashboardComponent implements OnInit {
   togglerr=true
-  status:boolean=true
-  status2:boolean=false
+ 
   constructor(private router:Router) { }
 
   ngOnInit(): void {
+
   }
   toggler(){
 
@@ -22,15 +22,6 @@ export class DashboardComponent implements OnInit {
       $("#sidebar").toggleClass("active");
     })
   }
-  change(){
 
-      this.status=false;
-      this.status2=true
-      this.router.navigate(["admin/posts"])
-  }
-  change2(){
-
-    this.status=true;
-    this.status2=false
-  }
+ 
 }

@@ -1,3 +1,14 @@
+<div class="row" style="border: 1px solid rgb(231, 43, 131);">
+
+  <div class="col-md-6  content_header header_first"  (click)="change()" [ngClass]="status ? 'light' : 'dark'">
+
+      <a >APPROVED</a>
+  </div>
+  <div class="col-md-6 content_header header_second " (click)="change2()" [ngClass]="status2 ? 'light' : 'dark'">
+<a >NOT APPROVED</a>
+  </div>
+
+</div>
 <table class="table table-hover table-dark">
   <thead>
     <tr>
@@ -7,23 +18,12 @@
       <th scope="col">Handle</th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
+  <tbody >
+    <tr *ngFor="let post of notapprovedposts">
       <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+      <td>{{post.title}}</td>
+      <td>{{post.content}}</td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+  
   </tbody>
 </table>
