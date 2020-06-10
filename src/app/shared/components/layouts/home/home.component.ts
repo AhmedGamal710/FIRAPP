@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
     this._postser.category().subscribe(data => {
       this.postinterface = data 
       console.log(data)
+      console.log(data[0].post[0])
     })    
   }
 scrollDown(){
