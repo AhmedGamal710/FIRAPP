@@ -84,7 +84,11 @@
                         font-weight: 500
                         top: 1px
                         position: relative
-                        
+                        &::before
+                            content: ""
+                            position: absolute
+                            opacity: 0
+                            transition: opacity .01s ease-in-out
                         &:hover
                             &::before
                                 transition: all 1s
@@ -92,19 +96,23 @@
                                 position: absolute
                                 border-bottom: 3px solid #FF6A82
                                 left: 15px
-                                top: 54px
+                                top: 53px
                                 height: 1px
                                 width: 50%
-                                animation: 1s ease infinite pulse
+                                opacity: 1
 
             .active
                     a 
                         &::before
                             content: ""
                             position: absolute
+                            opacity: 1
+                        &::before
+                            content: ""
+                            position: absolute
                             border-bottom: 2px solid #FF6A82
                             left: 15px
-                            top: 55px
+                            top: 53px
                             height: 1px
                             width: 50%                                              
         form
@@ -114,9 +122,9 @@
                     position: absolute
                     content: ""
                     left: 10px
-                    top: 21px
+                    top: 10px
                     width: 2px
-                    height: 50%
+                    height: 70%
                     border-left: 1px solid #a5a5a5
             i
                 color: #FF6A82

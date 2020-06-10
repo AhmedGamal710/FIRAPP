@@ -7,9 +7,10 @@ import { PostsService } from './../../../services/posts.service';
   styleUrls: ['./home.component.sass']
 })
 export class HomeComponent implements OnInit {
-  
+  isOption:boolean = false
   constructor(private _postser:PostsService) { }
   postinterface: Post[];
+  
   ngOnInit() {
     this._postser.category().subscribe(data => {
       this.postinterface = data 
@@ -22,5 +23,7 @@ scrollDown(){
 scrollTop(){
     window.scrollBy({top:-300, left:0, behavior:'smooth'})
   }
-
+  option(){
+    this.isOption = !this.isOption
+  }
 }
