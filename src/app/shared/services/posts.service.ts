@@ -12,8 +12,7 @@ import {Post} from '../classes/post'
 export class PostsService {
 
   constructor(private _http: HttpClient) { }
-//   let headers = new Headers();
-// headers.append('x_auth_token_admin', localStorage.getItem("token"));
+
 category():Observable<any> {
   return this._http.get("http://localhost:3000/xlarge/admin/categories/web");
 }

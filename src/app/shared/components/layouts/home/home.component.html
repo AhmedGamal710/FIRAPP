@@ -1,13 +1,15 @@
 <app-navbar></app-navbar>
-
+<div *ngFor="let posts of postinterface">
+        {{posts[0].post[0].img}}
+</div>
 <!-- start home -->
     <div class="home">
         <div class="row">
             <!-- start larg post -->
-            <div class=" col-md-9 col-lg-9 col-xl-9 col-sm-12">
+            <div class=" col-md-9 col-lg-9 col-xl-9 col-sm-12" >
                     <div class="background">
                         <div class="postOne " >
-                            <p class="date">Posted On September 28, 2018  <span>-Fashon</span></p>
+                            <p class="date"> <span>-Fashon</span></p>
                             <h3>Because New Fashion Do Never Follow Trends</h3>
                             <img src="../../../assets/image/nav/logo.png" alt=""> 
                             <span class="name">name</span> 
