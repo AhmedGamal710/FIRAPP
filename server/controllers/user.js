@@ -100,12 +100,16 @@ var {
       var salt = await bcrypt.genSalt(10);
       userr.password = await bcrypt.hash(userr.password, salt);
       await userr.save();
-    
-      
-      res.status(200).json({
-          userr
+      var token = jwt.sign({
+        _id: userr._id
+      }, config.get('jwtprivatekey'))
+      res.cookie('jwt', token, {
+        httpOnly: true
+      })
+      res.header("x_auth_token_user", token).status(200).json({
+        "token": token,
+        "user details":  userr,
       });
-
 
 
     }
@@ -127,8 +131,15 @@ var {
       await userr.save();
     
       
-      res.status(200).json({
-          userr
+      var token = jwt.sign({
+        _id: userr._id
+      }, config.get('jwtprivatekey'))
+      res.cookie('jwt', token, {
+        httpOnly: true
+      })
+      res.header("x_auth_token_user", token).status(200).json({
+        "token": token,
+        "user details":  userr,
       });
 
       
@@ -368,6 +379,8 @@ router.get("/list/posts/:id",auth,function(req,res){
 *    required:
 *    - "email"
 *    - "password"
+*    - "name"
+*    - "img"
 *    properties:
 *      email:
 *        type: "string"

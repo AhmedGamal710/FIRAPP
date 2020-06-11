@@ -9,7 +9,13 @@ var mongoose = require("mongoose");
 var jwt = require("jsonwebtoken");
 
 var bcrypt = require("bcryptjs");
-
+const path = require('path');
+var cloudinary = require('cloudinary');
+cloudinary.config({ 
+  cloud_name: 'ddo2kzwbh', 
+  api_key: '431946565525743', 
+  api_secret: '8gmOkgnY8RHDLRuAMf52CufXAOc' 
+});
 var {
   validateadmin,
   admin
@@ -18,7 +24,32 @@ var {
   validateuser,
   user
 } = require("../models/user");
+const multer = require('multer');
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, path.join(__dirname, '/upload/'));
+  },
+  filename: function(req, file, cb) {
+    cb(null,  file.originalname);
+  }
+});
 
+const fileFilter = (req, file, cb) => {
+  // reject a file
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  },
+  fileFilter: fileFilter
+});
 var {web,validateweb}=require("../models/web")
 var {android,validateandroid}=require("../models/Applicationdevelopment")
 var {post}=require("../models/post")
@@ -105,24 +136,57 @@ router.delete("/delete/post/:id", adminauth,function (req, resp) {
  */
 
 
-router.post("/add/admin",adminauth, parseUrlencoded, async (req, res) => {
+router.post("/add/admin",adminauth,  upload.single('img'),parseUrlencoded, async (req, res) => {
   var {
     error
   } = validateadmin(req.body);
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
+  let new_admin = await admin.findOne({
+    email: req.body.email
+  });
+  if (new_admin) {
+    return res.status(400).send("admin already registered.");
+  }
+  if(req.file){
 
-  let new_admin = new admin({
+
+    const result = await cloudinary.v2.uploader.upload(req.file.path)
+   new_admin = new admin({
     password: req.body.password,
     email: req.body.email,
+    name:req.body.name,
+    img:result.secure_url
+
+  });
+  var salt = await bcrypt.genSalt(5);
+  new_admin.password = await bcrypt.hash(new_admin.password, salt);
+  await new_admin.save();
+  res.json(new_admin);}
+  else{
+
+
+
+
+   new_admin = new admin({
+    password: req.body.password,
+    email: req.body.email,
+    name:req.body.name,
 
   });
   var salt = await bcrypt.genSalt(5);
   new_admin.password = await bcrypt.hash(new_admin.password, salt);
   await new_admin.save();
   res.json(new_admin);
+
+
+
+
+
+  }
 });
+
 
   /**
  * @swagger

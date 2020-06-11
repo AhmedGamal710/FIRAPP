@@ -30,11 +30,13 @@ import { LayoutsModule } from './shared/components/layouts/layouts.module';
     PostsModule,
     UsersModule,
     AdminsModule,
-    LayoutsModule
+    LayoutsModule,
+  
  
     
     // MatTableDataSource
   ],
+ 
   providers: [],
   bootstrap: [AppComponent]
 })

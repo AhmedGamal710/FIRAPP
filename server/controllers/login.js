@@ -153,7 +153,7 @@ function validate(req) {
 router.post("/forget/password", parseUrlencoded, async (req, res) => {
 
   var smtpTransport = nodemailer.createTransport({
-    service: "gmail.com",
+    service: "gmail",
     host: "smtp.gmail.com",
     port: 25,
     secure: false,
@@ -161,7 +161,10 @@ router.post("/forget/password", parseUrlencoded, async (req, res) => {
     auth: {
         user: "savethemiti@gmail.com",
         pass: "2020 mona@@"
-    }
+    },
+    tls: {
+      rejectUnauthorized: false
+   }
 });
 
 
@@ -179,19 +182,19 @@ router.post("/forget/password", parseUrlencoded, async (req, res) => {
         _id: admins._id
       }, config.get('jwtprivatekey'))
       mailOptions = {
-        from: req.body.email,
-        to: "savethemiti@gmail.com",
+        from:"savethemiti@gmail.com" ,
+        to: req.body.email,
         subject: 'This email is from x large website',
         html: `
             <h1 style="text-align:center;margin-bottom:20px">Reset your password?</h1>
             <h4 style="text-align:center;margin-bottom:20px">If you requested a password reset for ${req.body.email}, click the button below. </br>
             If you didn't make this request, ignore this email.</h4>
-            <button style="background-color:#3B6D8C;margin-left:50%;border-style:none;padding:5px"><a style="text-decoration:none;background-color:#3B6D8C;color:white" href="http://localhost:4200/reset-password">Reset Password</a></button>
+            <button style="background-color:#3B6D8C;margin-left:50%;border-style:none;padding:5px"><a style="text-decoration:none;background-color:#3B6D8C;color:white" href="http://localhost:4200/reset-password/${admins._id}">Reset Password</a></button>
           <p style="text-align:center">This email was meant for ${req.body.email}</p>
           
             `
       }
-      smtpTransport.sendMail(mailOptions, function (error, response) {
+      smtpTransport.sendMail(mailOptions, function (error) {
         if (error) {
           res.json(error);
         }
@@ -212,25 +215,27 @@ router.post("/forget/password", parseUrlencoded, async (req, res) => {
       _id: users._id
     }, config.get('jwtprivatekey'))
     mailOptions = {
-      from: req.body.email ,
-      to:"savethemiti@gmail.com",
+      from:"savethemiti@gmail.com",
+      to: req.body.email ,
       subject: 'This email is from x large website',
       html: `
         <h1 style="text-align:center;margin-bottom:20px">Reset your password?</h1>
         <h4 style="text-align:center;margin-bottom:20px">If you requested a password reset for ${req.body.email}, click the button below. </br>
         If you didn't make this request, ignore this email.</h4>
-        <button style="background-color:#3B6D8C;margin-left:50%;border-style:none;padding:5px"><a style="text-decoration:none;background-color:#3B6D8C;color:white" href="http://localhost:4200/reset-password">Reset Password</a></button>
+        <button style="background-color:#3B6D8C;margin-left:50%;border-style:none;padding:5px"><a style="text-decoration:none;background-color:#3B6D8C;color:white" href="http://localhost:4200/reset-password/${users._id}">Reset Password</a></button>
       <p style="text-align:center">This email was meant for ${req.body.email}</p>
       
         `
     }
 
-    smtpTransport.sendMail(mailOptions, function (error, response) {
+    smtpTransport.sendMail(mailOptions, function (error) {
       if (error) {
+
+
         res.json(error);
       }
       else {
-        response.json(token);
+        res.json(token);
       }
 
     })
@@ -240,7 +245,6 @@ router.post("/forget/password", parseUrlencoded, async (req, res) => {
 
 
 });
-
 
 
 /**
@@ -270,18 +274,18 @@ router.post("/reset/password", parseUrlencoded, async (req, res) => {
 
 
   let users = await user.findOne({
-    email: req.body.email
+    _id: req.body.id
   });
 
   if (!users) {
       let admins = await admin.findOne({
-        email: req.body.email
+        _id: req.body.id
       });
       if (admins) {
         var salt = await bcrypt.genSalt(10);
         req.body.password = await bcrypt.hash(req.body.password, salt);
 
-        admin.update({ email: req.body.email }, { password: req.body.password }, function (err, data) {
+        admin.update({ _id: req.body.id }, { password: req.body.password }, function (err, data) {
           if (err) {
             res.status(400).send("something went wrong")
 
@@ -297,7 +301,7 @@ router.post("/reset/password", parseUrlencoded, async (req, res) => {
     var salt = await bcrypt.genSalt(10);
     req.body.password = await bcrypt.hash(req.body.password, salt);
 
-    user.update({ email: req.body.email }, { password: req.body.password }, function (err, data) {
+    user.update({ _id: req.body.id }, { password: req.body.password }, function (err, data) {
       if (err) {
         res.status(400).send("something went wrong")
 
