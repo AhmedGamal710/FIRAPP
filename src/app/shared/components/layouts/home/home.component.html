@@ -1,13 +1,407 @@
 <app-navbar></app-navbar>
-<p>home works!</p>
 
-<div *ngFor="let post of postinterface">
-    {{post.name}}
-    {{post.createdat}}
-    {{post.likes}}
-    {{post.title}}
-    {{post.content}}
+<!-- start home -->
+    <div class="home">
+        <div class="row">
+            <!-- start larg post -->
+            <div class=" col-md-9 col-lg-9 col-xl-9 col-sm-12">
+                    <div class="background">
+                        <div class="postOne " >
+                            <p class="date">Posted On September 28, 2018  <span>-Fashon</span></p>
+                            <h3>Because New Fashion Do Never Follow Trends</h3>
+                            <img src="../../../assets/image/nav/logo.png" alt=""> 
+                            <span class="name">name</span> 
+                            <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                            <p class="nextSport">Next Sport
+                                <i (click)="scrollTop()" type="button" class="left fas fa-angle-left"></i>
+                                <i (click)="scrollDown()" type="button" class="right fas fa-angle-right "></i>
+                            </p>
+                        </div>
+                        <a href="">
+                            <img src="../../../assets/image/home/background.jpg" alt="">
+                        </a>
+                    </div>
+            </div>
+            <!-- end larg post  -->
+            <!-- start right posts for scrolling -->
+            <div class="scrolling col-md-3 col-lg-3 col-xl-3 col-sm-12 "  style="max-height:770px; overflow: hidden; position: relative;left: -24px;">
+                <div>
+                    <div class="Sports">
+                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                        <div class="content">
+                            <p>Because New Fashion Do Never Follow Trends</p>
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <span class="name"> name</span> 
+                            <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="Sports">
+                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                        <div class="content">
+                            <p>Because New Fashion Do Never Follow Trends</p>
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <span class="name"> name</span> 
+                            <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="Sports">
+                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                        <div class="content">
+                            <p>Because New Fashion Do Never Follow Trends</p>
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <span class="name"> name</span> 
+                            <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="Sports">
+                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                        <div class="content">
+                            <p>Because New Fashion Do Never Follow Trends</p>
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <span class="name"> name</span> 
+                            <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="Sports">
+                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                        <div class="content">
+                            <p>Because New Fashion Do Never Follow Trends</p>
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <span class="name"> name</span> 
+                            <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end right posts for scrolling -->
+        </div>
+    </div>
+
+<!-- start category -->
+    <div class="category">
+        <div class="row">
+            <!-- start left posts -->
+            <div class=" col-md-9 col-lg-9 col-sm-12 col-xl-9">
+                <div class="head">
+                    <h3>WORLD NEWS</h3>
+                    <ul>
+                        <li><a class="active" href="">All</a></li>
+                        <li><a href="">Asia</a></li>
+                        <li><a href="">Afica</a></li>
+                        <li><a href="">South</a></li>
+                        <li><a href="">Afica</a></li>
+                        <li><a href="">South</a></li>
+                        <i (click)="scrollTop()" type="button" class="left fas fa-angle-left"></i>
+                        <i (click)="scrollDown()" type="button" class="right fas fa-angle-right "></i>
+                    </ul>
+                </div><br>
+                <!-- start category posts -->
+                <div class="row">
+                    <div class=" big-post  col-lg-8 col-md-8 col-sm-12">
+                        <div class="Sports">
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <div class="content">
+                                <p>Because New Fashion Do Never Follow Trends</p>
+                                <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                <span class="name"> name</span> 
+                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- start tow posts -->
+                    <div class=" col-lg-4 col-md-4 col-xl-4 col-sm-12">
+                        <div class="col-lg-12 col-md-12 col-xl-12 col-sm-12 ">
+                            <div class="Sports">
+                                <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                <div class="content">
+                                    <p>Because New Fashion Do Never Follow Trends</p>
+                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                    <span class="name"> name</span> 
+                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-xl-12 col-sm-12 ">
+                            <div class="Sports">
+                                <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                <div class="content">
+                                    <p>Because New Fashion Do Never Follow Trends</p>
+                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                    <span class="name"> name</span> 
+                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end tow posts -->
+                </div>
+                <!-- start three posts -->
+                <div class="row ">
+                    <div class="bottom-row   col-lg-4 col-md-4 col-sm-12">
+                        <div class="Sports">
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <div class="content">
+                                <p>Because New Fashion Do Never Follow Trends</p>
+                                <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                <span class="name"> name</span> 
+                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-row  col-lg-4 col-md-4 col-sm-12">
+                        <div class="Sports">
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <div class="content">
+                                <p>Because New Fashion Do Never Follow Trends</p>
+                                <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                <span class="name"> name</span> 
+                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bottom-row  col-lg-4 col-md-4 col-sm-12"> 
+                        <div class="Sports">
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <div class="content">
+                                <p>Because New Fashion Do Never Follow Trends</p>
+                                <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                <span class="name"> name</span> 
+                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- start next parent div -->
+                <div class="parentSports">
+                    <div class="head">
+                        <h3>WORLD NEWS</h3>
+                        <ul>
+                            <li><a class="active" href="">All</a></li>
+                            <li><a href="">Asia</a></li>
+                            <li><a href="">Afica</a></li>
+                            <li><a href="">South</a></li>
+                            <li><a href="">Afica</a></li>
+                            <li><a href="">South</a></li>
+                            <i (click)="scrollTop()" type="button" class="left fas fa-angle-left"></i>
+                            <i (click)="scrollDown()" type="button" class="right fas fa-angle-right "></i>
+                        </ul>
+                    </div><br>
+                    <div class="row text-center">
+                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                            <div class="post">
+                                <a href="" class="imgPost"><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                <div class="content">
+                                    <p>International champion in France</p>
+                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                    <span class="name"> name</span> 
+                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                            <div class="post">
+                                <a href="" class="imgPost"><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                <div class="content">
+                                    <p>International champion in France</p>
+                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                    <span class="name"> name</span> 
+                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                            <div class="post">
+                                <a href="" class="imgPost"><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                <div class="content">
+                                    <p>International champion in France</p>
+                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                    <span class="name"> name</span> 
+                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                            <div class="post">
+                                <a href="" class="imgPost"><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                <div class="content">
+                                    <p>International champion in France</p>
+                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                    <span class="name"> name</span> 
+                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                            <div class="post">
+                                <a href="" class="imgPost"><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                <div class="content">
+                                    <p>International champion in France</p>
+                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                    <span class="name"> name</span> 
+                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                            <div class="post">
+                                <a href="" class="imgPost"><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                <div class="content">
+                                    <p>International champion in France</p>
+                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                    <span class="name"> name</span> 
+                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end three posts -->
+            </div>
+            
+            <!-- start right bar -->
+            <div class=" col-md-3 col-lg-3 col-sm-12 col-xl-3">
+                <div class="right-bar">
+                    <!-- connect -->
+                    <div class="connect">
+                        <h4>CONNECT</h4>
+                        <div class="items">
+                            <div class="facebook">
+                                <a href="" class="icon-facebook"> <i class="fab fa-facebook-f"></i> </a>
+                                <p>62.5K</p>
+                                <span>Followers</span>
+                            </div>
+                            <div class="twitter">
+                                <a href="" class="icon-twitter"><i class="fab fa-twitter "></i></a>
+                                <p>62.5K</p>
+                                <span>Followers</span>
+                            </div>
+                            <div class="youtube">
+                                <a href="" class="icon-youtube"><i class="fab fa-youtube"></i></a>
+                                <p>62.5K</p>
+                                <span>Followers</span>
+                            </div>
+                            <div class="instagram">
+                                <a href="" class="icon-instagram"><i class="fab fa-instagram"></i></a>
+                                <p>62.5K</p>
+                                <span>Followers</span>
+                            </div>
+                            <div class="pinterest">
+                                <a href="" class="icon-pinterest"><i class="fab fa-pinterest-p"></i></a>
+                                <p>62.5K</p>
+                                <span>Followers</span>
+                            </div>
+                            <div class="rss">
+                                <a href="" class="icon-rss"><i class="fas fa-rss"></i></a>
+                                <p>62.5K</p>
+                                <span>Followers</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end connect -->
+                    <!-- hot -->
+                    <div class="hot">
+                        <h4>WHAT’S HOT</h4>
+                        <div class="items">
+                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                            <a href=""><h3>Does US Tax Overhaul Violate Global Trade.</h3></a>
+                            <p>Sep 21,2018 <a href=""><span>-Sports</span></a></p>
+                        </div>
+                        <div class="items">
+                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                            <a href=""><h3>Does US Tax Overhaul Violate Global Trade.</h3></a>
+                            <p>Sep 21,2018 <a href=""><span>-Sports</span></a></p>
+                        </div>
+                        <div class="items">
+                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                            <a href=""><h3>Does US Tax Overhaul Violate Global Trade.</h3></a>
+                            <p>Sep 21,2018 <a href=""><span>-Sports</span></a></p>
+                        </div>
+                        <div class="items">
+                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                            <a href=""><h3>Does US Tax Overhaul Violate Global Trade.</h3></a>
+                            <p>Sep 21,2018 <a href=""><span>-Sports</span></a></p>
+                        </div>
+                    </div>
+                    <!-- end hot -->
+                    <!-- news -->
+                    <div class="news">
+                        <h4> RECENT NEWS </h4>
+                        <div class="items">
+                            
+                            <a href=""><h3>Does US Tax Overhaul Violate Global Trade.</h3> </a>
+                            <i type="button" (click)="option()" class="fas fa-ellipsis-v"></i>
+                            <div class="option" *ngIf="isOption == true ">
+                                <a href=""> <p> <i class="fas fa-user-alt"></i> Profile</p></a>
+                                <a href="">  <p> <i class="fas fa-pencil-alt"></i>    Edit</p></a>
+                                <a href=""><p><i class="fas fa-share"></i> Share</p></a>
+                            </div>
+                            <br><br><br><br>
+                            <p> Sep 21,2018<span>-Sports</span></p>
+                        </div>
+                        <div class="items">
+                            
+                            <a href=""><h3>Does US Tax Overhaul Violate Global Trade.</h3> </a>
+                            <i type="button" class="fas fa-ellipsis-v"></i>
+                            
+                            <br><br><br><br>
+                            <p> Sep 21,2018<span>-Sports</span></p>
+                        </div>
+                        
+                    </div>
+                    <!-- end news -->
+                    <!-- instgram -->
+                    <div class="instgram">
+                        <h4> Instgram </h4>
+                        <div class="items">
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                        </div>
+                    <!-- end instgram -->
+                    </div>
+            </div>
+            <!-- end right bar -->
+            
+        </div>
+        
+    </div>
     
-</div>
-
 <app-header></app-header>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Posts } from './../../../classes/posts'
+import {Post } from './../../../classes/post'
 import { PostsService } from './../../../services/posts.service';
 @Component({
   selector: 'app-home',
@@ -7,15 +7,24 @@ import { PostsService } from './../../../services/posts.service';
   styleUrls: ['./home.component.sass']
 })
 export class HomeComponent implements OnInit {
-  
+  isOption:boolean = false
   constructor(private _postser:PostsService) { }
-  postinterface: Posts[];
+  postinterface: Post[];
+  
   ngOnInit() {
     this._postser.category().subscribe(data => {
       this.postinterface = data 
       console.log(data)
-      console.log(this.postinterface)
+      console.log(data[0].post[0])
     })    
   }
-
+scrollDown(){
+  window.scrollBy({top:300, left:0, behavior:'smooth'})
+  }
+scrollTop(){
+    window.scrollBy({top:-300, left:0, behavior:'smooth'})
+  }
+  option(){
+    this.isOption = !this.isOption
+  }
 }
