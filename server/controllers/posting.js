@@ -906,7 +906,7 @@ else{
 
 
 }
-  }).populate({path:"likedBy , comments.commentator",
+  }).populate({path:"likedBy , comments.commentator , createdby" ,
 
     model:"user"
   
