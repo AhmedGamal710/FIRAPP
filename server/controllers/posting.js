@@ -869,7 +869,7 @@ else{
 
 
 router.get("/list", async (req, res) => {
-  let result = await post.find({isapproved:true}).populate({path:"likedBy , comments.commentator",model:"user"}
+  let result = await post.find({isapproved:true}).populate({path:"likedBy , comments.commentator , createdby",model:"user"}
   // ,{
   //   path:"comments",
   //   populate:{
@@ -946,7 +946,7 @@ else{
 
 }
   }).populate({
-    path:"likedBy , comments.commentator",
+    path:"likedBy , comments.commentator , createdby",
     model:"user"
   
 
@@ -986,7 +986,7 @@ else{
 
 }
   }).populate({
-    path:"likedBy , comments.commentator",
+    path:"likedBy , comments.commentator , createdby",
     model:"user"
   
 }).exec(function(err,data){
@@ -1027,7 +1027,7 @@ else{
 
 }
   }).populate({
-    path:"likedBy , comments.commentator",
+    path:"likedBy , comments.commentator , createdby",
     model:"user"
  
 
@@ -1067,7 +1067,7 @@ else{
 
 }
   }).populate({
-    path:"likedBy , comments.commentator",
+    path:"likedBy , comments.commentator , createdby",
     model:"user"
   
 }).exec(function(err,data){
@@ -1105,7 +1105,7 @@ else{
 
 }
   }).populate({
-    path:"likedBy , comments.commentator",
+    path:"likedBy , comments.commentator , createdby",
     model:"user"
   
 
@@ -1144,7 +1144,7 @@ else{
 
 }
   }).populate({
-    path:"likedBy , comments.commentator",
+    path:"likedBy , comments.commentator , createdby",
     model:"user"
   
 
@@ -1183,7 +1183,7 @@ else{
 
 }
   }).populate({
-    path:"likedBy , comments.commentator",
+    path:"likedBy , comments.commentator , createdby",
     model:"user"
   
 

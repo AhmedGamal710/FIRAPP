@@ -27,7 +27,7 @@ const routes: Routes = [
         loadChildren: () => UsersModule
 
       },{
-        path:'categories',
+        path:'',
         loadChildren: () => CategoriesModule
 
 

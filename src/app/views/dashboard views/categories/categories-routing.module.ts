@@ -3,12 +3,21 @@ import { Routes, RouterModule } from '@angular/router';
 import { CategoriesComponent } from './categories/categories.component';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { WebComponent } from './categories/web/web/web.component';
+import { WebRoutingModule } from './categories/web/web-routing.module';
 
 const routes: Routes = [
 
   {
     path:'',
-    component:CategoriesComponent
+    component:CategoriesComponent,
+    children:[
+   
+      { path: 'category', loadChildren: () => WebRoutingModule },
+    
+
+
+    ]
   }
 ];
 

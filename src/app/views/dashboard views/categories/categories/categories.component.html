@@ -2,28 +2,28 @@
                 <div class="dashboard_pageContent-header bg-light " >
                     <ul class="dashboard_pageContent-nav text-center napills " id="pills-tab" role="tablist">
                     <li class="nav-link active" id="pills-post-tab" data-toggle="pill" href="#pills-posts" role="tab" aria-controls="pills-post" aria-selected="true">
-                    <a href="javascript:void(0)"><i class="fas fa-book-open"></i>Web development</a>
+                    <a [routerLink]="['category/web']" ><i class="fas fa-book-open"></i>Web development</a>
                     </li>
                     <li class="nav-link " id="pills-admins-tab" data-toggle="pill" href="#pills-admins" role="tab" aria-controls="pills-admins" aria-selected="true">
-                        <a href="javascript:void(0)"><i class="fas fa-users-cog"></i>Application development</a>
+                        <a [routerLink]="['category/application development']" ><i class="fas fa-users-cog"></i>Application development</a>
                     </li>
                     <li class="nav-link" id="pills-users-tab" data-toggle="pill" href="#pills-users" role="tab" aria-controls="pills-users" aria-selected="true">
-                        <a href="javascript:void(0)"><i class="fas fa-users"></i>Miscellaneous fields</a>
+                        <a [routerLink]="['category/Miscellaneous fields']"><i class="fas fa-users"></i>Miscellaneous fields</a>
                     </li>
                    
                     <li class="nav-link" id="pills-categories-tab" data-toggle="pill" href="#pills-categories" role="tab" aria-controls="pills-categories" aria-selected="true">
-                    <a href="javascript:void(0)"><i class="fas fa-book"></i>Competitive programming</a>
+                    <a [routerLink]="['category/Competitive programming']"><i class="fas fa-book"></i>Competitive programming</a>
                     </li>
                     <li class="nav-link" id="pills-massages-tab" data-toggle="pill" href="#pills-massages" role="tab" aria-controls="pills-massages" aria-selected="true">
-                    <a href="javascript:void(0)"><i class="fas fa-paper-plane"></i> Data science</a>
+                    <a [routerLink]="['category/Data science']"><i class="fas fa-paper-plane"></i> Data science</a>
                     </li>
                     <li class="nav-link" id="pills-news-tab" data-toggle="pill" href="#pills-news" role="tab" aria-controls="pills-news" aria-selected="true">
-                    <a href="javascript:void(0)"><i class="far fa-newspaper"></i> Machine learning</a>
+                    <a [routerLink]="['category/Machine learning']"><i class="far fa-newspaper"></i> Machine learning</a>
                     </li>
 
 
                     <li class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="true">
-                        <a href="javascript:void(0)"><i class="fa fa-pen"></i>Open source</a>
+                        <a [routerLink]="['category/Open source']"><i class="fa fa-pen"></i>Open source</a>
                         </li>
                     </ul>
                 </div>
@@ -31,40 +31,8 @@
             
  
 </div>
+<router-outlet></router-outlet>
 
-  <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
-  
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-      </ng-container>
-  
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-      </ng-container>
-  
-      <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef> Weight </th>
-        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-      </ng-container>
-  
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-  </div>
-  
+ 
   
   
