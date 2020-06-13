@@ -13,10 +13,13 @@ export class HomeComponent implements OnInit {
   
   ngOnInit() {
     this._postser.category().subscribe(data => {
-      this.postinterface = data 
+      this.postinterface = data
       console.log(data)
       console.log(data[0].post[0])
     })    
+ 
+    
+
   }
 scrollDown(){
   window.scrollBy({top:300, left:0, behavior:'smooth'})
