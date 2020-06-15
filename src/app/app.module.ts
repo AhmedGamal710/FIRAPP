@@ -12,6 +12,7 @@ import { PostsModule } from './views/posts/posts.module';
 import { AdminsModule } from './views/dashboard views/admins/admins.module';
 import { UsersModule } from './views/dashboard views/users/users.module';
 import { LayoutsModule } from './shared/components/layouts/layouts.module';
+import { WebModule } from './views/dashboard views/categories/categories/web/web.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { LayoutsModule } from './shared/components/layouts/layouts.module';
     UsersModule,
     AdminsModule,
     LayoutsModule,
-  
+    WebModule
  
     
     // MatTableDataSource

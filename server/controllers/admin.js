@@ -1,7 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var router = express.Router();
-
+const path = require('path');
+var cloudinary = require('cloudinary');
 var parseUrlencoded = bodyParser.urlencoded({
   extended: true
 });
@@ -9,13 +10,7 @@ var mongoose = require("mongoose");
 var jwt = require("jsonwebtoken");
 
 var bcrypt = require("bcryptjs");
-const path = require('path');
-var cloudinary = require('cloudinary');
-cloudinary.config({ 
-  cloud_name: 'ddo2kzwbh', 
-  api_key: '431946565525743', 
-  api_secret: '8gmOkgnY8RHDLRuAMf52CufXAOc' 
-});
+
 var {
   validateadmin,
   admin
@@ -188,6 +183,64 @@ router.post("/add/admin",adminauth,  upload.single('img'),parseUrlencoded, async
 });
 
 
+
+
+
+
+
+  /**
+ * @swagger
+ * /xlarge/admin/delete/admin/:id:
+ *  delete:
+ *    description: Use to delete admin
+ *    responses:
+ *      '200':
+ *        description: user is deleted successfully
+ * 
+ */
+
+
+
+router.delete("/delete/admin/:id", adminauth,function (req, resp) {
+
+  mongoose.model("admin").findOneAndRemove({
+    _id: req.params.id
+ ,owner:false},
+    function (err, data) {
+      if (data) {
+        resp.json("admin deleted")
+
+      }
+      else {
+        resp.json("admin cannot deleted")
+
+      }
+    })
+
+  
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   /**
  * @swagger
  * /xlarge/admin/account/:id:
@@ -232,6 +285,52 @@ router.get("/user/list",adminauth, async (req, res) => {
 
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+  /**
+ * @swagger
+ * /xlarge/admin/admin/list:
+ *  get:
+ *    description: Use to retrieve All admins  
+ *    responses:
+ *      '200':
+ *        description: A successful request with the data of all users send in json format
+ * 
+ */
+
+
+router.get("/admin/list",adminauth, async (req, res) => {
+  let result = await admin.find({});
+  res.json(result)
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   /**

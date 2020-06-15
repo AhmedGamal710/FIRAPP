@@ -1,33 +1,57 @@
-<!-- <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource"> -->
-  
-      <!-- Position Column -->
-      <!-- <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-      </ng-container>
-   -->
-      <!-- Name Column -->
-      <!-- <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-      </ng-container> -->
-  
-      <!-- Weight Column -->
-      <!-- <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef> Weight </th>
-        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-      </ng-container> -->
-  
-      <!-- Symbol Column -->
-      <!-- <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+<div class="container">
+  <div class="row">
+<h3>{{errormsg}}</h3>
+    <table class="table table-hover table-dark col-md-5">
+     
+      <tbody>
+        <tr *ngFor="let item of webmodel ; let i = index">
+          <th scope="row">{{i +1}}</th>
+          <td>{{item.name}}</td>
+          <td><button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-sm"> Update</button>
+          </td>
+          <td><button type="button" (click)="deletewebcategory(item)"  class="btn btn-danger btn-sm">Delete</button>
+          </td>
+          <div class="modal fade"  id="exampleModalCenter" tabindex="-1" role="dialog" 
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content" >
+                  
+                <div class="modal-body">
+                  <div class=" blog_bg_lightgreen title pt-2 pb-2" style="font-family: Montserrat, sans-serif">Update category</div>
+                  
+                  <form   #updateForm="ngForm"   (ngSubmit)="onSubmit(item)"   novalidate>
+                      
+                      <div class="form-group">
+                        <input type="text" class="form-control" name="name" #name="ngModel" pattern="^.{2,15}$" 
+                        [class.is-invalid]="name.invalid && name.touched"
+                        required class="form-control" [(ngModel)]=" webcat.name"  placeholder="Add New Name">
+                        <div *ngIf="name.errors && (name.invalid || name.touched)">
+                          <small class="text-danger" *ngIf="name.errors.required && name.touched" >Name is
+                            required</small>
+                          <small class="text-danger" *ngIf="name.errors.pattern && name.touched" >Name must be from 2 to 15
+                            digits</small>
+                        </div>
+                      </div>
+                    
+                      <button type="submit" [disabled]="updateForm.form.invalid"  class="btn blog_bg_pink mt-4 mb-2 float-left"><a  class="blog_btn blog_bg_pink cookie_btn">Update</a></button>
+                    </form>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+        </tr>
+       
+      </tbody>
     </table>
+
+ 
+
+  </div>
   
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-  </div> -->
+</div>
+
+
+
+
+<!-- Modal -->

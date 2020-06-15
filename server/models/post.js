@@ -71,6 +71,16 @@ var post = mongoose.model("post", new mongoose.Schema({
       commentator: {  type: mongoose.Schema.Types.ObjectId,
         ref: 'user' }
     }],
+    commentsnum:{
+      type: Number,
+       default: 0
+    }
+    ,
+    views:{
+      type: Number,
+      default: 0
+    }
+    ,
     isapproved:{
        type:Boolean,
        default:false

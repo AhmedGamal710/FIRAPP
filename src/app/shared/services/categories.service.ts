@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { SubCategory } from 'src/app/shared/classes/sub-category';
 
 @Injectable({
   providedIn: 'root'
@@ -42,9 +43,27 @@ export class CategoriesService {
       "http://localhost:3000/xlarge/admin/categories/Opensource")
 
   }
+  
+  deleteweb(_id){
+   return this._http.delete("http://localhost:3000/xlarge/admin/delete/category/web/"+_id
+  ,{
+    headers: new HttpHeaders({
+      'x_auth_token_admin': localStorage.getItem("token"),
+    })})
+  
+  }
 
 
-
+  updateweb(_subcategory:SubCategory,_id){
+    return this._http.post("http://localhost:3000/xlarge/admin/update/category/web/"+_id
+   ,_subcategory ,{
+    headers: new HttpHeaders({
+      'x_auth_token_admin': localStorage.getItem("token")
+    })
+  })
+   
+   }
+ 
 
 
 
