@@ -13,9 +13,22 @@ export class PostsService {
 
   constructor(private _http: HttpClient) { }
 
-category():Observable<any> {
-  return this._http.get("http://localhost:3000/xlarge/admin/categories/web");
-}
+  web():Observable<any> {
+    return this._http.get(`http://localhost:3000/xlarge/admin/categories/web`);
+  }
+  Miscellaneousfields():Observable<any> {
+    return this._http.get("http://localhost:3000/xlarge/admin/categories/Miscellaneousfields");
+  }
+  Applicationdevelopment():Observable<any> {
+    return this._http.get("http://localhost:3000/xlarge/admin/categories/Applicationdevelopment");
+  }
+  Competitiveprogramming():Observable<any> {
+    return this._http.get("http://localhost:3000/xlarge/admin/categories/Competitiveprogramming");
+  }
+  Datascience():Observable<any> {
+    return this._http.get("http://localhost:3000/xlarge/admin/categories/Datascience");
+  }
+
   listnotapproved(){
     return this._http.get(
       "http://localhost:3000/xlarge/admin/list/notapproved", {
