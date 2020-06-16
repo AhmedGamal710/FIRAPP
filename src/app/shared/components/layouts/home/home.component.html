@@ -1,90 +1,44 @@
 <app-navbar></app-navbar>
-<!-- <div *ngFor="let posts of postinterface">
-        {{posts[0].post[0].img}}
-</div> -->
+<!-- <br><br><br><br><br>
+<div *ngFor="let post of Web">
+    {{post.likes}}
+</div><br><br><br><br> -->
 <!-- start home -->
+
     <div class="home">
         <div class="row">
             <!-- start larg post -->
             <div class=" col-md-9 col-lg-9 col-xl-9 col-sm-12" >
                     <div class="background">
-                        <div class="postOne " >
-                            <p class="date"> <span>-Fashon</span></p>
-                            <h3>Because New Fashion Do Never Follow Trends</h3>
-                            <img src="../../../assets/image/nav/logo.png" alt=""> 
-                            <span class="name">name</span> 
-                            <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                        <div class="postOne " *ngFor="let post of Web" >
+                            <p class="date"> {{post.createdat | date}} <span>-Fashon</span></p>
+                            <h3>{{ post.title }}</h3>
+                            <img class="img-fluid" [src]="post.img" alt="">
+                            <span class="name">{{ post.name }}</span> 
+                            <span class="like"> <a href=""><i class="fas fa-eye"></i> {{ post.likes  }}</a></span>
+                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> {{ post.commentsnum }}</a> </span>
                             <p class="nextSport">Next Sport
                                 <i (click)="scrollTop()" type="button" class="left fas fa-angle-left"></i>
                                 <i (click)="scrollDown()" type="button" class="right fas fa-angle-right "></i>
                             </p>
                         </div>
                         <a href="">
-                            <img src="../../../assets/image/home/background.jpg" alt="">
+                            <img class="img-fluid" src="../../../assets/image/home/background.jpg" alt="">
                         </a>
                     </div>
             </div>
             <!-- end larg post  -->
             <!-- start right posts for scrolling -->
-            <div class="scrolling col-md-3 col-lg-3 col-xl-3 col-sm-12 "  style="max-height:770px; overflow: hidden; position: relative;left: -24px;">
-                <div>
+            <div id="scrolling"  class="scrolling col-md-3 col-lg-3 col-xl-3 col-sm-12" >
+                <div *ngFor="let post of Web">
                     <div class="Sports">
-                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                        <a href=""><img  class="img-fluid" [src]="post.img" alt=""></a>
                         <div class="content">
-                            <p>Because New Fashion Do Never Follow Trends</p>
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <a href="#" class="name"> <span > name</span>  </a>
-                            <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="Sports">
-                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                        <div class="content">
-                            <p>Because New Fashion Do Never Follow Trends</p>
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <a href="#" class="name"> <span > name</span>  </a>
-                            <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="Sports">
-                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                        <div class="content">
-                            <p>Because New Fashion Do Never Follow Trends</p>
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <a href="#" class="name"> <span > name</span>  </a>
-                            <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="Sports">
-                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                        <div class="content">
-                            <p>Because New Fashion Do Never Follow Trends</p>
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <a href="#" class="name"> <span > name</span>  </a>
-                            <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div class="Sports">
-                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                        <div class="content">
-                            <p>Because New Fashion Do Never Follow Trends</p>
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <a href="#" class="name"> <span > name</span>  </a>
-                            <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                            <p>{{post.title}}</p>
+                            <a href=""><img class="img-fluid" [src]="post.img" alt=""></a>
+                            <a href="#" class="name"> <span > {{post.name}}</span>  </a>
+                            <span class="like"> <a href=""><i class="fas fa-eye"></i> {{post.likes}}</a></span>
+                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> {{post.commentsnum}}</a> </span>
                         </div>
                     </div>
                 </div>
@@ -98,465 +52,596 @@
         <div class="row">
             <!-- start left posts -->
             <div class=" col-md-9 col-lg-9 col-sm-12 col-xl-9">
-                <div class="head">
-                    <h3>WORLD NEWS</h3>
-                    <ul>
-                        <li><a class="active" href="">All</a></li>
-                        <li><a href="">Asia</a></li>
-                        <li><a href="">Afica</a></li>
-                        <li><a href="">South</a></li>
-                        <li><a href="">Afica</a></li>
-                        <li><a href="">South</a></li>
-                        <i (click)="scrollTop()" type="button" class="left fas fa-angle-left"></i>
-                        <i (click)="scrollDown()" type="button" class="right fas fa-angle-right "></i>
-                    </ul>
-                </div><br>
-                <!-- start category posts -->
-                <div class="row">
-                    <div class=" big-post  col-lg-8 col-md-8 col-sm-12">
-                        <div class="Sports">
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <div class="content">
-                                <p>Because New Fashion Do Never Follow Trends</p>
-                                <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                <a href="#" class="name"> <span > name</span>  </a>
-                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                            </div>
+                <!-- crete post -->
+                <div class="createPost">
+                    <div class="user-info text-center col-md-4 col-lg-4 col-sm-12 col-xl-4">
+                        <div class="color">
+                            <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
                         </div>
+                        <h4>islam mohamed</h4>
+                        <p>web designer</p>
                     </div>
-                    <!-- start tow posts -->
-                    <div class=" col-lg-4 col-md-4 col-xl-4 col-sm-12">
-                        <div class="col-lg-12 col-md-12 col-xl-12 col-sm-12 ">
-                            <div class="Sports">
-                                <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                <div class="content">
-                                    <p>Because New Fashion Do Never Follow Trends</p>
-                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                    <a href="#" class="name"> <span > name</span>  </a>
-                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                    <form class="form-group col-md-8 col-lg-8 col-sm-12 col-xl-8" >
+                        <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                        <div class="form-group mr-2">
+                            
+                            <button class="toggle btn btn-group-lg " data-toggle="modal" data-target="#exampleModal" >crate a post</button>
+                        </div>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h3 class="modal-title" id="exampleModalLongTitle">Crete a post</h3>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-xl-12 col-sm-12 ">
-                            <div class="Sports">
-                                <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                <div class="content">
-                                    <p>Because New Fashion Do Never Follow Trends</p>
-                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                    <a href="#" class="name"> <span > name</span>  </a>
-                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                <div class="modal-body">
+                                  <input type="text" placeholder="title" class="form-control" >
+                                  <textarea name="" placeholder="Type Your Post" class="form-control" ></textarea>
                                 </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                  <button type="button" class="btn btn-primary">Post</button>
+                                </div>
+                              </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- end tow posts -->
-                </div>
-                <!-- start three posts -->
-                <div class="row ">
-                    <div class="bottom-row   col-lg-4 col-md-4 col-sm-12">
-                        <div class="Sports">
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <div class="content">
-                                <p>Because New Fashion Do Never Follow Trends</p>
-                                <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                <a href="#" class="name"> <span > name</span>  </a>
-                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom-row  col-lg-4 col-md-4 col-sm-12">
-                        <div class="Sports">
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <div class="content">
-                                <p>Because New Fashion Do Never Follow Trends</p>
-                                <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                <a href="#" class="name"> <span > name</span>  </a>
-                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom-row  col-lg-4 col-md-4 col-sm-12"> 
-                        <div class="Sports">
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <div class="content">
-                                <p>Because New Fashion Do Never Follow Trends</p>
-                                <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                <a href="#" class="name"> <span > name</span>  </a>
-                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                            </div>
-                        </div>
-                    </div>
+                          </div>
+                    </form>
                 </div>
                 <!-- start next parent div -->
                 <div class="parentPosts">
                     <!-- start child one WORLD NEWS -->
-                    <div class="row text-center">
+                    <!-- final web -->
+                        <div class="row">
+                            <div class="head">
+                                <h3>Web</h3>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="all-tab" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">All</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="asia-tab" data-toggle="tab" href="#asia" role="tab" aria-controls="asia" aria-selected="false">Asia</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="africa-tab" data-toggle="tab" href="#africa" role="tab" aria-controls="africa" aria-selected="false">Afica</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="south-tab" data-toggle="tab" href="#south" role="tab" aria-controls="south" aria-selected="false">South</a>
+                                    </li>
+                                    
+                                    <i (click)="scrollleft()" type="button" class="left fas fa-angle-left"></i>
+                                    <i  (click)="scrollRight()" type="button" class="right fas fa-angle-right "></i>
+                                </ul>
+                            </div>
+                            <div class="tab-content" id="myTabContent" >
+                                <!-- ---------------------------------------------- -->
+                                <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                                    <div class="dontHave" *ngIf="Web.length == 0">
+                                        <p class="alert alert-danger"> we dont have posts yet <button  data-toggle="modal" data-target="#exampleModal" class="btn">Create Post</button></p>
+                                    </div>
+                                    <!-- start content -->
+                                    <div class="row">
+                                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                                            <div class="post" *ngFor="let post of Web">
+                                                <a href="" class="imgPost"><img class="img-fluid" [src]="post.img" alt=""></a>
+                                                <div class="content">
+                                                    <p class="title">{{post.title | slice : 0 : 50 }}... </p>
+                                                    <a href=""><img class="img-fluid" [src]="post.img" alt=""></a>
+                                                    <a href="#" class="name"> <span > {{post.createdby |slice : 0 : 5}} .. </span>  </a>
+                                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> {{post.likes}}</a></span>
+                                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> {{post.commentsnum}}</a> </span>
+                                                    <p class="testPost">{{post.content |slice:0:150}}...</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end content -->
+                                </div>
+                                <!-- ---------------------------------------------- -->
+                                <div class="tab-pane fade" id="asia" role="tabpanel" aria-labelledby="asia-tab">
+                                    <!-- start content -->
+                                    <div class="row">
+                                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                                            <div class="post">
+                                                <a href="" class="imgPost"><img  class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                <div class="content">
+                                                    <p>asia champion in France</p>
+                                                    <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                    <a href="#" class="name"> <span > name</span>  </a>
+                                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                                            <div class="post">
+                                                <a href="" class="imgPost"><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                <div class="content">
+                                                    <p>International champion in France</p>
+                                                    <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                    <a href="#" class="name"> <span > name</span>  </a>
+                                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end content  -->
+                                </div> 
+                                <!-- ---------------------------------------------- -->
+                                <div class="tab-pane fade" id="africa" role="tabpanel" aria-labelledby="africa-tab">
+                                    <!-- start content -->
+                                    <div class="row">
+                                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                                            <div class="post">
+                                                <a href="" class="imgPost"><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                <div class="content">
+                                                    <p>africa champion in France</p>
+                                                    <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                    <a href="#" class="name"> <span > name</span>  </a>
+                                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                                            <div class="post">
+                                                <a href="" class="imgPost"><img  class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                <div class="content">
+                                                    <p>africa champion in France</p>
+                                                    <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                    <a href="#" class="name"> <span > name</span>  </a>
+                                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end content -->
+                                </div>
+                                <!-- ---------------------------------------------- -->
+                                <div class="tab-pane fade" id="south" role="tabpanel" aria-labelledby="south-tab">
+                                    <!-- start content -->
+                                    <div class="row">
+                                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                                            <div class="post">
+                                                <a href="" class="imgPost"><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                <div class="content">
+                                                    <p>south champion in France</p>
+                                                    <a href=""><img  class="img-fluid"src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                    <a href="#" class="name"> <span > name</span>  </a>
+                                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                                            <div class="post">
+                                                <a href="" class="imgPost"><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                <div class="content">
+                                                    <p>south champion in France</p>
+                                                    <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                    <a href="#" class="name"> <span > name</span>  </a>
+                                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end content -->
+                                </div>
+                                <!-- ---------------------------------------------- -->
+                            </div>
+                        </div>
+                    <!-- end final web -->
+                    <!-- final Applicationdevelopment -->
+                    <div class="row">
                         <div class="head">
-                            <h3>Sports</h3>
-                            <ul>
-                                <li><a class="active" href="">All</a></li>
-                                <li><a href="">Asia</a></li>
-                                <li><a href="">Afica</a></li>
-                                <li><a href="">South</a></li>
-                                <li><a href="">Afica</a></li>
-                                <li><a href="">South</a></li>
-                                <i (click)="scrollTop()" type="button" class="left fas fa-angle-left"></i>
-                                <i (click)="scrollDown()" type="button" class="right fas fa-angle-right "></i>
+                            <h3>Development</h3>
+                            <ul class="nav nav-tabs" id="myTab " role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="allDev-tab" data-toggle="tab" href="#allDev" role="tab" aria-controls="allDev" aria-selected="true">All</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="asiaDev-tab" data-toggle="tab" href="#asiaDev" role="tab" aria-controls="asiaDev" aria-selected="false">Asia</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="africaDev-tab" data-toggle="tab" href="#africaDev" role="tab" aria-controls="africaDev" aria-selected="false">Afica</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="southDev-tab" data-toggle="tab" href="#southDev" role="tab" aria-controls="southDev" aria-selected="false">South</a>
+                                </li>
+                                
+                                <i (click)="scrollleft()" type="button" class="left fas fa-angle-left"></i>
+                                <i  (click)="scrollRight()" type="button" class="right fas fa-angle-right "></i>
                             </ul>
                         </div>
-                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
-                            <div class="post">
-                                <a href="" class="imgPost"><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                <div class="content">
-                                    <p>International champion in France</p>
-                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                    <a href="#" class="name"> <span > name</span>  </a>
-                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                        <div class="tab-content" id="myTabContent" >
+                            <!-- ---------------------------------------------- -->
+                            <div class="tab-pane fade show active" id="allDev" role="tabpanel" aria-labelledby="allDev-tab">
+                                <div class="dontHave" *ngIf="appDeveloper.length == 0">
+                                    <p class="alert alert-danger"> we dont have posts yet <button  data-toggle="modal" data-target="#exampleModal"  class="btn">Create Post</button></p>
                                 </div>
-                            </div>
-                        </div>
-                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
-                            <div class="post">
-                                <a href="" class="imgPost"><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                <div class="content">
-                                    <p>International champion in France</p>
-                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                    <a href="#" class="name"> <span > name</span>  </a>
-                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
-                            <div class="post">
-                                <a href="" class="imgPost"><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                <div class="content">
-                                    <p>International champion in France</p>
-                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                    <a href="#" class="name"> <span > name</span>  </a>
-                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
-                            <div class="post">
-                                <a href="" class="imgPost"><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                <div class="content">
-                                    <p>International champion in France</p>
-                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                    <a href="#" class="name"> <span > name</span>  </a>
-                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
-                            <div class="post">
-                                <a href="" class="imgPost"><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                <div class="content">
-                                    <p>International champion in France</p>
-                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                    <a href="#" class="name"> <span > name</span>  </a>
-                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" col-lg-6 col-md-6 col-sm-12"> 
-                            <div class="post">
-                                <a href="" class="imgPost"><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                <div class="content">
-                                    <p>International champion in France</p>
-                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                    <a href="#" class="name"> <span > name</span>  </a>
-                                    <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                    <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                    <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- end shild one  WORLD NEWS-->
-                    <!-- start child tow food -->
-                    <div class="food">
-                        <div class="row">
-                            <div class="head">
-                                <h3>WORLD NEWS</h3>
-                                <ul>
-                                    <li><a class="active" href="">All</a></li>
-                                    <li><a href="">Asia</a></li>
-                                    <li><a href="">Afica</a></li>
-                                    <li><a href="">South</a></li>
-                                    <li><a href="">Afica</a></li>
-                                    <li><a href="">South</a></li>
-                                    <i (click)="scrollTop()" type="button" class="left fas fa-angle-left"></i>
-                                    <i (click)="scrollDown()" type="button" class="right fas fa-angle-right "></i>
-                                </ul>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="left-post">
-                                    <a href="" class="imgPost">
-                                        <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
-                                    </a>
-                                    <a href="#" class="title"><h3>Office Volunteers Needed To Answer And Help</h3></a>
-                                    <div class="details">
-                                        <a href="" class="userLogo">
-                                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
-                                        </a>
-                                        <a href="#" class="name"> <span > name</span>  </a>
-                                        <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                        <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                        <p class="postContent">Lorem ipsum dolor sit amet, consectetur adiicing ielit sed do
-                                             eiusmod tempor incididunt ut labore et iagna aliqua. Ut enim ad minim veniam, 
-                                            quis nostrud tation ullamco laboris nisi ut aliquip ex ea commodo 
-                                            equats aute irure dolor in reprehenderit.ea commodoin.</p>
-                                        <button class="btn">Read More <i class="fas fa-long-arrow-alt-right"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="right-post">
-                                    <div class="details">
-                                        <a href="" class="imgPost">
-                                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
-                                        </a>
-                                        <a href="#" class="title"><h3>Office Volunteers Needed To Answer And Help</h3></a>
-                                        <a href="#" class="user"> <img src="../../../../../assets/image/dashboard/hero.jpg" alt=""> </a>
-                                        <a href="#" class="name"> <span > name</span>  </a>
-                                        <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                        <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                    </div>
-                                    <div class="details">
-                                        <a href="" class="imgPost">
-                                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
-                                        </a>
-                                        <a href="#" class="title"><h3>Office Volunteers Needed To Answer And Help</h3></a>
-                                        <a href="#" class="user"> <img src="../../../../../assets/image/dashboard/hero.jpg" alt=""> </a>
-                                        <a href="#" class="name"> <span > name</span>  </a>
-                                        <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                        <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                        
-                                    </div>
-                                    <div class="details">
-                                        <a href="" class="imgPost">
-                                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
-                                        </a>
-                                        <a href="#" class="title"><h3>Office Volunteers Needed To Answer And Help</h3></a>
-                                        <a href="#" class="user"> <img src="../../../../../assets/image/dashboard/hero.jpg" alt=""> </a>
-                                        <a href="#" class="name"> <span > name</span>  </a>
-                                        <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                        <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                        
-                                    </div>
-                                    <div class="details">
-                                        <a href="" class="imgPost">
-                                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
-                                        </a>
-                                        <a href="#" class="title"><h3>Office Volunteers Needed To Answer And Help</h3></a>
-                                        <a href="#" class="user"> <img src="../../../../../assets/image/dashboard/hero.jpg" alt=""> </a>
-                                        <a href="#" class="name"> <span > name</span>  </a>
-                                        <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                        <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end child tow food -->
-                    <!-- start travels -->
-                    <div class="travels">
-                        <div class="row">
-                            <div class="head">
-                                <h3>WORLD NEWS</h3>
-                                <ul>
-                                    <li><a class="active" href="">All</a></li>
-                                    <li><a href="">Asia</a></li>
-                                    <li><a href="">Afica</a></li>
-                                    <li><a href="">South</a></li>
-                                    <li><a href="">Afica</a></li>
-                                    <li><a href="">South</a></li>
-                                    <i (click)="scrollTop()" type="button" class="left fas fa-angle-left"></i>
-                                    <i (click)="scrollDown()" type="button" class="right fas fa-angle-right "></i>
-                                </ul>
-                            </div>
-
-                            <div class=" big-post  col-lg-8 col-md-8 col-sm-12">
-                                <div class="Sports">
-                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                    <div class="content">
-                                        <p>Because New Fashion Do Never Follow Trends</p>
-                                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                        <a href="#" class="name"> <span > name</span>  </a>
-                                        <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                        <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- start tow posts -->
-                            <div class=" col-lg-4 col-md-4 col-xl-4 col-sm-12">
-                                <div class="col-lg-12 col-md-12 col-xl-12 col-sm-12 ">
-                                    <div class="Sports">
-                                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                        <div class="content">
-                                            <p>Because New Fashion Do Never Follow Trends</p>
-                                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                            <a href="#" class="name"> <span > name</span>  </a>
-                                            <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                <!-- start content -->
+                                <div class="row">
+                                    <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                                        <div class="post" *ngFor="let post of appDeveloper">
+                                            <a href="" class="imgPost"><img class="img-fluid" [src]="post.img" alt=""></a>
+                                            <div class="content">
+                                                <p class="title">{{post.title | slice : 0 : 50 }}... </p>
+                                                <a href=""><img class="img-fluid" [src]="post.img" alt=""></a>
+                                                <a href="#" class="name"> <span > {{post.createdby |slice : 0 : 10}} .. </span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> {{post.likes}}</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> {{post.commentsnum}}</a> </span>
+                                                <p class="testPost">{{post.content |slice:0:150}}...</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12 col-md-12 col-xl-12 col-sm-12 ">
-                                    <div class="Sports">
-                                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                        <div class="content">
-                                            <p>Because New Fashion Do Never Follow Trends</p>
-                                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                            <a href="#" class="name"> <span > name</span>  </a>
-                                            <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                            <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                <!-- end content -->
+                            </div>
+                            <!-- ---------------------------------------------- -->
+                            <div class="tab-pane fade" id="asiaDev" role="tabpanel" aria-labelledby="asiaDev-tab">
+                                <!-- start content -->
+                                <div class="row">
+                                    <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                                        <div class="post">
+                                            <a href="" class="imgPost"><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                            <div class="content">
+                                                <p>asia Dev champion in France</p>
+                                                <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                <a href="#" class="name"> <span > name</span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                                        <div class="post">
+                                            <a href="" class="imgPost"><img class="img-fluid"  src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                            <div class="content">
+                                                <p>asia Dev champion in France</p>
+                                                <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                <a href="#" class="name"> <span > name</span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- end content -->
                             </div>
-                            <!-- end tow posts -->
-                        </div>
-                        <!-- start three posts -->
-                        <div class="row ">
-                            <div class="bottom-row   col-lg-4 col-md-4 col-sm-12">
-                                <div class="Sports">
-                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                    <div class="content">
-                                        <p>Because New Fashion Do Never Follow Trends</p>
-                                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                        <a href="#" class="name"> <span > name</span>  </a>
-                                        <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                        <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                            <!-- ---------------------------------------------- -->
+                            <div class="tab-pane fade" id="africaDev" role="tabpanel" aria-labelledby="africaDev-tab">
+                                <!-- start content -->
+                                <div class="row">
+                                    <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                                        <div class="post">
+                                            <a href="" class="imgPost"><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                            <div class="content">
+                                                <p>africa Dev champion in France</p>
+                                                <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                <a href="#" class="name"> <span > name</span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                                        <div class="post">
+                                            <a href="" class="imgPost"><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                            <div class="content">
+                                                <p>africa Dev champion in France</p>
+                                                <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                <a href="#" class="name"> <span > name</span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- end content -->
                             </div>
-                            <div class="bottom-row  col-lg-4 col-md-4 col-sm-12">
-                                <div class="Sports">
-                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                    <div class="content">
-                                        <p>Because New Fashion Do Never Follow Trends</p>
-                                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                        <a href="#" class="name"> <span > name</span>  </a>
-                                        <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                        <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                            <!-- ---------------------------------------------- -->
+                            <div class="tab-pane fade" id="southDev" role="tabpanel" aria-labelledby="southDev-tab">
+                                <!-- start content -->
+                                <div class="row">
+                                    <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                                        <div class="post">
+                                            <a href="" class="imgPost"><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                            <div class="content">
+                                                <p>south Dev champion in France</p>
+                                                <a href=""><img  class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                <a href="#" class="name"> <span > name</span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class=" col-lg-6 col-md-6 col-sm-12"> 
+                                        <div class="post">
+                                            <a href="" class="imgPost"><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                            <div class="content">
+                                                <p>south Dev champion in France</p>
+                                                <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                                                <a href="#" class="name"> <span > name</span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                <p class="testPost">Lorem ipsum dolor sitamet secte itur adipisicing elit sed.</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- end content -->
                             </div>
-                            <div class="bottom-row  col-lg-4 col-md-4 col-sm-12"> 
-                                <div class="Sports">
-                                    <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                    <div class="content">
-                                        <p>Because New Fashion Do Never Follow Trends</p>
-                                        <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                                        <a href="#" class="name"> <span > name</span>  </a>
-                                        <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                        <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- ---------------------------------------------- -->
                         </div>
                     </div>
-                    <!-- end travels -->
-                    <!-- start TECHNOLOGY -->
+                <!-- end final Applicationdevelopment -->
+                <!-- final Miscellaneousfields -->
                     <div class="technology">
                         <div class="row">
                             <div class="head">
-                                <h3>Technology</h3>
-                                <ul>
-                                    <li><a class="active" href="">All</a></li>
-                                    <li><a href="">Asia</a></li>
-                                    <li><a href="">Afica</a></li>
-                                    <li><a href="">South</a></li>
-                                    <li><a href="">Afica</a></li>
-                                    <li><a href="">South</a></li>
-                                    <i (click)="scrollTop()" type="button" class="left fas fa-angle-left"></i>
-                                    <i (click)="scrollDown()" type="button" class="right fas fa-angle-right "></i>
+                                <h3> Miscellaneous </h3>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="allTec-tab" data-toggle="tab" href="#allTec" role="tab" aria-controls="allTec" aria-selected="true">All</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="asiaTec-tab" data-toggle="tab" href="#asiaTec" role="tab" aria-controls="asiaTec" aria-selected="false">Asia</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="africaTec-tab" data-toggle="tab" href="#africaTec" role="tab" aria-controls="africaTec" aria-selected="false">Afica</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="southTec-tab" data-toggle="tab" href="#southTec" role="tab" aria-controls="southTec" aria-selected="false">South</a>
+                                    </li>
+                                    
+                                    <i (click)="scrollleft()" type="button" class="left fas fa-angle-left"></i>
+                                    <i  (click)="scrollRight()" type="button" class="right fas fa-angle-right "></i>
                                 </ul>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="post">
-                                    <a href="" class="imgPost">
-                                        <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
-                                    </a>
-                                    <a href="#" class="title"><h3>Office Volunteers Needed To Answer And Help</h3></a>
-                                    <div class="details">
-                                        <a href="" class="userLogo">
-                                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
-                                        </a>
-                                        <a href="#" class="name"> <span > name</span>  </a>
-                                        <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                        <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                        <p class="postContent">Lorem ipsum dolor sit amet, consectetur adiicing ielit sed do
-                                             eiusmod tempor incididunt ut labore et iagna aliqua. Ut enim ad minim veniam, 
-                                            quis nostrud tation ullamco laboris nisi ut aliquip ex ea commodo 
-                                            equats aute irure dolor in reprehenderit.ea commodoin.</p>
-                                        <button class="btn">Read More <i class="fas fa-long-arrow-alt-right"></i></button>
+                            <div class="tab-content" id="myTabContent" >
+                                <!-- ---------------------------------------------- -->
+                                <div class="tab-pane fade show active" id="allTec" role="tabpanel" aria-labelledby="allTec-tab">
+                                    <div class="dontHave" *ngIf="Miscellaneousfields.length == 0">
+                                        <p class="alert alert-danger"> we dont have posts yet <button  data-toggle="modal" data-target="#exampleModal"  class="btn">Create Post</button></p>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="post" *ngFor="let post of Miscellaneousfields">
+                                            <a href="" class="imgPost">
+                                                <img class="img-fluid" [src]="post.img" alt="">
+                                            </a>
+                                            <a href="#" class="title"><h3>{{post.title}}</h3></a>
+                                            <div class="details">
+                                                <a href="" class="userLogo">
+                                                    <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                                                </a>
+                                                <a href="#" class="name"> <span > {{post.name}}</span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> {{post.likes}}</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> {{ post.commentsnum }}</a> </span>
+                                                <p class="postContent">{{post.content | slice : 0 : 220}}...</p>
+                                                <button class="btn">Read More <i class="fas fa-long-arrow-alt-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <!-- ---------------------------------------------- -->
+                                <div class="tab-pane fade" id="asiaTec" role="tabpanel" aria-labelledby="asiaTec-tab">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="post">
+                                            <a href="" class="imgPost">
+                                                <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                                            </a>
+                                            <a href="#" class="title"><h3>Tec Volunteers Needed To Answer And Help</h3></a>
+                                            <div class="details">
+                                                <a href="" class="userLogo">
+                                                    <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                                                </a>
+                                                <a href="#" class="name"> <span > name</span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                <p class="postContent">Lorem ipsum dolor sit amet, consectetur adiicing ielit sed do
+                                                    eiusmod tempor incididunt ut labore et iagna aliqua. Ut enim ad minim veniam, 
+                                                   quis nostrud tation ullamco laboris nisi ut aliquip ex ea commodo 
+                                                   equats aute irure dolor in reprehenderit.ea commodoin.</p>
+                                                <button class="btn">Read More <i class="fas fa-long-arrow-alt-right"></i></button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="post">
-                                    <a href="" class="imgPost">
-                                        <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
-                                    </a>
-                                    <a href="#" class="title"><h3>Office Volunteers Needed To Answer And Help</h3></a>
-                                    <div class="details">
-                                        <a href="" class="userLogo">
-                                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
-                                        </a>
-                                        <a href="#" class="name"> <span > name</span>  </a>
-                                        <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                        <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                        <p class="postContent">Lorem ipsum dolor sit amet, consectetur adiicing ielit sed do
-                                             eiusmod tempor incididunt ut labore et iagna aliqua. Ut enim ad minim veniam, 
-                                            quis nostrud tation ullamco laboris nisi ut aliquip ex ea commodo 
-                                            equats aute irure dolor in reprehenderit.ea commodoin.</p>
-                                        <button class="btn">Read More <i class="fas fa-long-arrow-alt-right"></i></button>
+                                <!-- ---------------------------------------------- -->
+                                <div class="tab-pane fade" id="africaTec" role="tabpanel" aria-labelledby="africaTec-tab">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="post">
+                                            <a href="" class="imgPost">
+                                                <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                                            </a>
+                                            <a href="#" class="title"><h3>Tec africa Volunteers Needed To Answer And Help</h3></a>
+                                            <div class="details">
+                                                <a href="" class="userLogo">
+                                                    <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                                                </a>
+                                                <a href="#" class="name"> <span > name</span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                <p class="postContent">Lorem ipsum dolor sit amet, consectetur adiicing ielit sed do
+                                                     eiusmod tempor incididunt ut labore et iagna aliqua. Ut enim ad minim veniam, 
+                                                    quis nostrud tation ullamco laboris nisi ut aliquip ex ea commodo 
+                                                    equats aute irure dolor in reprehenderit.ea commodoin.</p>
+                                                <button class="btn">Read More <i class="fas fa-long-arrow-alt-right"></i></button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                <div class="post">
-                                    <a href="" class="imgPost">
-                                        <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
-                                    </a>
-                                    <a href="#" class="title"><h3>Office Volunteers Needed To Answer And Help</h3></a>
-                                    <div class="details">
-                                        <a href="" class="userLogo">
-                                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
-                                        </a>
-                                        <a href="#" class="name"> <span > name</span>  </a>
-                                        <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                        <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                                        <p class="postContent">Lorem ipsum dolor sit amet, consectetur adiicing ielit sed do
-                                             eiusmod tempor incididunt ut labore et iagna aliqua. Ut enim ad minim veniam, 
-                                            quis nostrud tation ullamco laboris nisi ut aliquip ex ea commodo 
-                                            equats aute irure dolor in reprehenderit.ea commodoin.</p>
-                                        <button class="btn">Read More <i class="fas fa-long-arrow-alt-right"></i></button>
+                                <!-- ---------------------------------------------- -->
+                                <div class="tab-pane fade" id="southTec" role="tabpanel" aria-labelledby="southTec-tab">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="post">
+                                            <a href="" class="imgPost">
+                                                <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                                            </a>
+                                            <a href="#" class="title"><h3>Office Volunteers Needed To Answer And Help</h3></a>
+                                            <div class="details">
+                                                <a href="" class="userLogo">
+                                                    <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                                                </a>
+                                                <a href="#" class="name"> <span > name</span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                <p class="postContent">Lorem ipsum dolor sit amet, consectetur adiicing ielit sed do
+                                                     eiusmod tempor incididunt ut labore et iagna aliqua. Ut enim ad minim veniam, 
+                                                    quis nostrud tation ullamco laboris nisi ut aliquip ex ea commodo 
+                                                    equats aute irure dolor in reprehenderit.ea commodoin.</p>
+                                                <button class="btn">Read More <i class="fas fa-long-arrow-alt-right"></i></button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- ---------------------------------------------- -->
                             </div>
                         </div>
                     </div>
+            <!-- end final Miscellaneousfields -->
+            <!-- final Competitiveprogramming -->
+                    <div class="technology">
+                        <div class="row">
+                            <div class="head">
+                                <h3> Programming </h3>
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="allPro-tab" data-toggle="tab" href="#allPro" role="tab" aria-controls="allPro" aria-selected="true">All</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="asiaPro-tab" data-toggle="tab" href="#asiaPro" role="tab" aria-controls="asiaPro" aria-selected="false">Asia</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="africaPro-tab" data-toggle="tab" href="#africaPro" role="tab" aria-controls="africaPro" aria-selected="false">Afica</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="southPro-tab" data-toggle="tab" href="#southPro" role="tab" aria-controls="southPro" aria-selected="false">South</a>
+                                    </li>
+                                    
+                                    <i (click)="scrollleft()" type="button" class="left fas fa-angle-left"></i>
+                                    <i  (click)="scrollRight()" type="button" class="right fas fa-angle-right "></i>
+                                </ul>
+                            </div>
+                            <div class="tab-content" id="myTabContent" >
+                                <!-- ---------------------------------------------- -->
+                                <div class="tab-pane fade show active" id="allPro" role="tabpanel" aria-labelledby="allPro-tab">
+                                    <div class="dontHave" *ngIf="program.length == 0">
+                                        <p class="alert alert-danger"> we dont have posts yet <button  data-toggle="modal" data-target="#exampleModal" class="btn">Create Post</button></p>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="post" *ngFor="let post of program">
+                                            <a href="" class="imgPost">
+                                                <img class="img-fluid" [src]="post.img" alt="">
+                                            </a>
+                                            <a href="#" class="title"><h3>{{post.title}}</h3></a>
+                                            <div class="details">
+                                                <a href="" class="userLogo">
+                                                    <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                                                </a>
+                                                <a href="#" class="name"> <span > {{post.name}}</span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> {{post.likes}}</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> {{ post.commentsnum }}</a> </span>
+                                                <p class="postContent">{{post.content | slice : 0 : 70}}...</p>
+                                                <button class="btn">Read More <i class="fas fa-long-arrow-alt-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <!-- ---------------------------------------------- -->
+                                <div class="tab-pane fade" id="asiaPro" role="tabpanel" aria-labelledby="asiaPro-tab">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="post">
+                                            <a href="" class="imgPost">
+                                                <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                                            </a>
+                                            <a href="#" class="title"><h3>Programming 2 Volunteers Needed To Answer And Help</h3></a>
+                                            <div class="details">
+                                                <a href="" class="userLogo">
+                                                    <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                                                </a>
+                                                <a href="#" class="name"> <span > name</span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                <p class="postContent">Lorem ipsum dolor sit amet, consectetur adiicing ielit sed do
+                                                    eiusmod tempor incididunt ut labore et iagna aliqua. Ut enim ad minim veniam, 
+                                                    quis nostrud tation ullamco laboris nisi ut aliquip ex ea commodo 
+                                                    equats aute irure dolor in reprehenderit.ea commodoin.</p>
+                                                <button class="btn">Read More <i class="fas fa-long-arrow-alt-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ---------------------------------------------- -->
+                                <div class="tab-pane fade" id="africaPro" role="tabpanel" aria-labelledby="africaPro-tab">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="post">
+                                            <a href="" class="imgPost">
+                                                <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                                            </a>
+                                            <a href="#" class="title"><h3>Programming 3 africa Volunteers Needed To Answer And Help</h3></a>
+                                            <div class="details">
+                                                <a href="" class="userLogo">
+                                                    <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                                                </a>
+                                                <a href="#" class="name"> <span > name</span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                <p class="postContent">Lorem ipsum dolor sit amet, consectetur adiicing ielit sed do
+                                                    eiusmod tempor incididunt ut labore et iagna aliqua. Ut enim ad minim veniam, 
+                                                    quis nostrud tation ullamco laboris nisi ut aliquip ex ea commodo 
+                                                    equats aute irure dolor in reprehenderit.ea commodoin.</p>
+                                                <button class="btn">Read More <i class="fas fa-long-arrow-alt-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ---------------------------------------------- -->
+                                <div class="tab-pane fade" id="southPro" role="tabpanel" aria-labelledby="southPro-tab">
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="post">
+                                            <a href="" class="imgPost">
+                                                <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                                            </a>
+                                            <a href="#" class="title"><h3>Programming 4 Volunteers Needed To Answer And Help</h3></a>
+                                            <div class="details">
+                                                <a href="" class="userLogo">
+                                                    <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                                                </a>
+                                                <a href="#" class="name"> <span > name</span>  </a>
+                                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
+                                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
+                                                <p class="postContent">Lorem ipsum dolor sit amet, consectetur adiicing ielit sed do
+                                                    eiusmod tempor incididunt ut labore et iagna aliqua. Ut enim ad minim veniam, 
+                                                    quis nostrud tation ullamco laboris nisi ut aliquip ex ea commodo 
+                                                    equats aute irure dolor in reprehenderit.ea commodoin.</p>
+                                                <button class="btn">Read More <i class="fas fa-long-arrow-alt-right"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ---------------------------------------------- -->
+                            </div>
+                        </div>
+                    </div>
+                <!-- end final Competitiveprogramming -->
                 </div>                
                 <!-- end parent posts -->
             </div>
@@ -606,22 +691,22 @@
                     <div class="hot">
                         <h4>WHAT’S HOT</h4>
                         <div class="items">
-                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                            <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
                             <a href=""><h3>Does US Tax Overhaul Violate Global Trade.</h3></a>
                             <p>Sep 21,2018 <a href=""><span>-Sports</span></a></p>
                         </div>
                         <div class="items">
-                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                            <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
                             <a href=""><h3>Does US Tax Overhaul Violate Global Trade.</h3></a>
                             <p>Sep 21,2018 <a href=""><span>-Sports</span></a></p>
                         </div>
                         <div class="items">
-                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                            <img  class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
                             <a href=""><h3>Does US Tax Overhaul Violate Global Trade.</h3></a>
                             <p>Sep 21,2018 <a href=""><span>-Sports</span></a></p>
                         </div>
                         <div class="items">
-                            <img src="../../../../../assets/image/dashboard/hero.jpg" alt="">
+                            <img  class="img-fluid"src="../../../../../assets/image/dashboard/hero.jpg" alt="">
                             <a href=""><h3>Does US Tax Overhaul Violate Global Trade.</h3></a>
                             <p>Sep 21,2018 <a href=""><span>-Sports</span></a></p>
                         </div>
@@ -657,15 +742,15 @@
                     <div class="instgram">
                         <h4> Instgram </h4>
                         <div class="items">
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
-                            <a href=""><img src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
+                            <a href=""><img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""></a>
                         </div>
                     </div>
                      <!-- end instgram -->
@@ -702,60 +787,7 @@
                         </div>
                     </div>
                     <!-- end CATEGORIES -->
-                    <!-- start DON'T MISS -->
-                    <div class="dontMiss">
-                        <h4> DON'T MISS </h4>
-                        <div class="items">
-                            <a href="#" > <img src="../../../../../assets/image/dashboard/hero.jpg" alt=""> </a>
-                            <div class="content">
-                                <a href="#" class="title"><h3>Office Volunteers Needed To Answer And Help</h3></a>
-                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                            </div>
-                        </div>
-                        <div class="items">
-                            <a href="#" > <img src="../../../../../assets/image/dashboard/hero.jpg" alt=""> </a>
-                            <div class="content">
-                                <a href="#" class="title"><h3>Office Volunteers Needed To Answer And Help</h3></a>
-                                <span class="like"> <a href=""><i class="fas fa-eye"></i> 15k</a></span>
-                                <span class="comment"> <a href=""><i class="fas fa-comments"></i> 12</a> </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- end DON'T MISS -->
-                    <!-- start ARCHIVES -->
-                    <div class="achives">
-                        <h4> Achives </h4>
-                        <div class="items">
-                            <ul>
-                                <li> 
-                                    <i class="fas fa-chevron-right"></i> 
-                                    <a href="#">Beauty  <span>(02)</span> </a>
-                                </li>
-                                <li> 
-                                    <i class="fas fa-chevron-right"></i> 
-                                    <a href="#">Fashion   <span>(45)</span> </a>
-                                </li>
-                                <li> 
-                                    <i class="fas fa-chevron-right"></i> 
-                                    <a href="#">LifeStyle  <span>(124)</span> </a>
-                                </li>
-                                <li> 
-                                    <i class="fas fa-chevron-right"></i> 
-                                    <a href="#">Markeup  <span>(75)</span> </a>
-                                </li>
-                                <li> 
-                                    <i class="fas fa-chevron-right"></i> 
-                                    <a href="#">Others  <span>(1,242)</span> </a>
-                                </li>
-                                <li> 
-                                    <i class="fas fa-chevron-right"></i> 
-                                    <a href="#">Travel  <span>(186)</span> </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <!-- start ARCHIVES -->
+                    
                     <!-- start subscribe -->
                     <div class="subscribe">
                         <h4> SUBSCRIBE </h4>
@@ -772,7 +804,7 @@
                     <div class="ads">
                         <div  class="items">
                             
-                            <a href="#" > ads here  <img src="../../../../../assets/image/dashboard/hero.jpg" alt=""> </a>
+                            <a href="#" > ads here  <img  class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt=""> </a>
                         </div>
                     </div>
                     <!-- end ads -->
