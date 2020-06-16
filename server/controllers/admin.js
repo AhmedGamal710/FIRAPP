@@ -325,6 +325,76 @@ router.get("/admin/list",adminauth, async (req, res) => {
 
 
 
+  /**
+ * @swagger
+ * /xlarge/admin/update/:id:
+ *  post:
+ *    description: Use to update admin details
+ *    parameters:
+ *      - name: name
+ *        description: updated name of admin
+ *        schema:
+ *          type: string
+ *          format: string
+ *      - name: password
+ *        description: updated admin password
+ *        schema:
+ *          type: string
+ *          format: string
+ *      - name: img
+ *        description: updated admin img
+ *        schema:
+ *          type: string
+ *          format: string
+ *    responses:
+ *      '200':
+ *        description: A successful request with the data of this updated admin send in json format
+ * 
+ */
+
+router.post("/update/:id",adminauth ,upload.single('img'), async (req, res) => {
+
+  if(req.file){
+
+    const resultt = await cloudinary.v2.uploader.upload(req.file.path)
+  if(req.body.password){
+    var salt = await bcrypt.genSalt(10);
+    req.body.password = await bcrypt.hash(req.body.password, salt);
+  }
+    let result = await admin.findOneAndUpdate({ _id: req.params.id }, {  name:  req.body.name, password: req.body.password,img:resultt.secure_url })
+    res.json("done")
+    
+  }
+
+else{
+  if(req.body.password){
+    var salt = await bcrypt.genSalt(10);
+    req.body.password = await bcrypt.hash(req.body.password, salt);
+  }
+    let result = await admin.findOneAndUpdate({ _id: req.params.id }, {  name:  req.body.name, password: req.body.password })
+    res.json("done")
+
+
+}
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

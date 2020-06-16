@@ -9,6 +9,7 @@ cloudinary.config({
   api_key: '431946565525743', 
   api_secret: '8gmOkgnY8RHDLRuAMf52CufXAOc' 
 });
+var random = require('mongoose-random');
 
 const multer = require('multer');
 const storage = multer.diskStorage({
@@ -871,12 +872,7 @@ else{
 
 router.get("/list", async (req, res) => {
   let result = await post.find({isapproved:true}).populate({path:"likedBy , comments.commentator , createdby",model:"user"}
-  // ,{
-  //   path:"comments",
-  //   populate:{
-  //     path:"commentator",
-  //     model:"user"
-  //   }
+ 
   )
 
   res.json(result)
@@ -900,7 +896,7 @@ router.get("/list", async (req, res) => {
 router.put("/list/:id", async (req, res) => {
 
   
-  let result = await post.findOneAndUpdate({ _id: req.params.id }, {$inc : {'views' : 1}}).populate(
+  let result = await post.findOneAndUpdate({ _id: req.params.id ,isapproved:true}, {$inc : {'views' : 1}}).populate(
     {path:"likedBy , comments.commentator , createdby",
 
   model:"user"
@@ -914,6 +910,56 @@ router.put("/list/:id", async (req, res) => {
 })
   
 })
+
+
+
+
+  /**
+ * @swagger
+ * /xlarge/post/list/post/random":
+ *  get:
+ *    description: Use to retrieve random Posts  
+ *    responses:
+ *      '200':
+ *        description: A successful request with the data of all posts send in json format
+ * 
+ */
+
+
+
+router.get("/list/post/random", async (req, res) => {
+
+post.aggregate(
+  [ {"$match":{"isapproved":true}}, { $sample: { size: 6 } } ],function(err,data){
+if(data){
+  post.populate(data, {path:"likedBy , comments.commentator , createdby",model:"user"}, function(err,posts){
+ if(posts)  res.json(posts)
+else res.json(err)
+  });
+
+}
+else res.json(err)
+
+  }
+)
+
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -951,8 +997,14 @@ model:"web"
 }]})
 for(let i=0;i<result.length;i++){
   if(result[i].post.length != 0){
+    for(let j=0;j<result[i].post.length;j++){
+    if(result[i].post[j].isapproved==true){
+      arr1.push(result[i].post[j])
 
-  arr1.push(result[i].post)
+    }
+    }
+
+
   }
 
 }
@@ -988,11 +1040,17 @@ model:"android"
 
 }]})
 for(let i=0;i<result.length;i++){
-if(result[i].post.length != 0){
-  arr1.push(result[i].post)
+  if(result[i].post.length != 0){
+    for(let j=0;j<result[i].post.length;j++){
+    if(result[i].post[j].isapproved==true){
+      arr1.push(result[i].post[j])
+
+    }
+    }
 
 
-}
+  }
+
 }
 res.json(arr1)
 })
@@ -1024,11 +1082,17 @@ model:"competitive"
 
 }]})
 for(let i=0;i<result.length;i++){
-if(result[i].post.length != 0){
-  arr1.push(result[i].post)
+  if(result[i].post.length != 0){
+    for(let j=0;j<result[i].post.length;j++){
+    if(result[i].post[j].isapproved==true){
+      arr1.push(result[i].post[j])
+
+    }
+    }
 
 
-}
+  }
+
 }
 res.json(arr1)
 })
@@ -1063,11 +1127,17 @@ model:"testing"
 
 }]})
 for(let i=0;i<result.length;i++){
-if(result[i].post.length != 0){
-  arr1.push(result[i].post)
+  if(result[i].post.length != 0){
+    for(let j=0;j<result[i].post.length;j++){
+    if(result[i].post[j].isapproved==true){
+      arr1.push(result[i].post[j])
+
+    }
+    }
 
 
-}
+  }
+
 }
 res.json(arr1)
 })
@@ -1100,11 +1170,17 @@ model:"data"
 
 }]})
 for(let i=0;i<result.length;i++){
-if(result[i].post.length != 0){
-  arr1.push(result[i].post)
+  if(result[i].post.length != 0){
+    for(let j=0;j<result[i].post.length;j++){
+    if(result[i].post[j].isapproved==true){
+      arr1.push(result[i].post[j])
+
+    }
+    }
 
 
-}
+  }
+
 }
 res.json(arr1)
 })
@@ -1136,11 +1212,17 @@ model:"machine"
 
 }]})
 for(let i=0;i<result.length;i++){
-if(result[i].post.length != 0){
-  arr1.push(result[i].post)
+  if(result[i].post.length != 0){
+    for(let j=0;j<result[i].post.length;j++){
+    if(result[i].post[j].isapproved==true){
+      arr1.push(result[i].post[j])
+
+    }
+    }
 
 
-}
+  }
+
 }
 res.json(arr1)
 })
@@ -1174,11 +1256,17 @@ model:"opensource"
 
 }]})
 for(let i=0;i<result.length;i++){
-if(result[i].post.length != 0){
-  arr1.push(result[i].post)
+  if(result[i].post.length != 0){
+    for(let j=0;j<result[i].post.length;j++){
+    if(result[i].post[j].isapproved==true){
+      arr1.push(result[i].post[j])
+
+    }
+    }
 
 
-}
+  }
+
 }
 res.json(arr1)
 })
