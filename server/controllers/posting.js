@@ -9,7 +9,6 @@ cloudinary.config({
   api_key: '431946565525743', 
   api_secret: '8gmOkgnY8RHDLRuAMf52CufXAOc' 
 });
-var random = require('mongoose-random');
 
 const multer = require('multer');
 const storage = multer.diskStorage({
