@@ -17,9 +17,14 @@ export class AuthService {
 
   }
   signup(formData){
-    
     return this._http.post<any>("http://localhost:3000/xlarge/user/signup", formData);
-
+  }
+  userInfo(id):Observable<any> {
+    return this._http.get(`http://localhost:3000/xlarge/user/account/${id}`,{
+      headers:{
+        'x_auth_token_user': localStorage.getItem("token"),
+      }
+    } )
   }
   getCountries(){
 

@@ -71,6 +71,22 @@ export class HomeComponent implements OnInit {
     let ele = document.getElementById("myTabContent")
     ele.scrollBy({top:0, left: -528 ,behavior:"smooth"})
   }
+
+  selectpox(){
+    var ele = document.getElementById("category")
+    if( ele.value == "web" ) {
+      document.getElementById("new-select").style.display = "inline"
+      document.getElementById("option").innerHTML = "front end"
+    }
+    if( ele.value == "tecnology" ) {
+      document.getElementById("new-select").style.display = "inline"
+      document.getElementById("option").innerHTML = "laptops"
+    }
+    if( ele.value == "programing" ) {
+      document.getElementById("new-select").style.display = "inline"
+      document.getElementById("option").innerHTML = "c++"
+    }
+  }
   option(){
     this.isOption = !this.isOption
   }

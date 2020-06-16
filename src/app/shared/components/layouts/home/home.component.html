@@ -64,7 +64,6 @@
                     <form class="form-group col-md-8 col-lg-8 col-sm-12 col-xl-8" >
                         <img class="img-fluid" src="../../../../../assets/image/dashboard/hero.jpg" alt="">
                         <div class="form-group mr-2">
-                            
                             <button class="toggle btn btn-group-lg " data-toggle="modal" data-target="#exampleModal" >crate a post</button>
                         </div>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -79,6 +78,18 @@
                                 <div class="modal-body">
                                   <input type="text" placeholder="title" class="form-control" >
                                   <textarea name="" placeholder="Type Your Post" class="form-control" ></textarea>
+                                  <p > welo</p>
+                                  <select (click)="selectpox()" id="category">
+                                    <option selected> choose</option>
+                                    <hr>
+                                    <option > web </option>
+                                    <option > tecnology </option>
+                                    <option > programing </option>
+                                  </select>
+                                  <select style="display:none" id="new-select">
+
+                                    <option id="option"></option>
+                                  </select>
                                 </div>
                                 <div class="modal-footer">
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

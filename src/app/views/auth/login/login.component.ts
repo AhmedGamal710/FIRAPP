@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Login } from 'src/app/shared/classes/login';
 import {AuthService} from '../../../shared/services/auth.service'
 import { Router } from "@angular/router";
+import { UserInfo } from 'src/app/shared/classes/Userinfo';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +12,11 @@ import { Router } from "@angular/router";
 export class LoginComponent implements OnInit {
   loginModel = new Login("", "");
   loginerror=""
+  userId 
+  userdeatil: UserInfo
   constructor(private _AuthService:AuthService,private router: Router) { }
  
-  ngOnInit(): void {
-  }
+  
   onSubmit() {
     this._AuthService.login(this.loginModel).subscribe(
       response => {
@@ -24,13 +26,16 @@ export class LoginComponent implements OnInit {
 
         if (response.role === "user") {
           localStorage.setItem("id", response.id as string);
-
+          this.router.navigate(['/home'])
         } else {
           localStorage.setItem("id", response.id as string);
-
         }
+        // get user info
+        this.userId = response.id
+        this._AuthService.userInfo(this.userId).subscribe(
+          res => { this.userdeatil = res }
+        )
       },
-
       error => {
         {
           this.loginerror = "Something went wrong please try again";
@@ -38,4 +43,10 @@ export class LoginComponent implements OnInit {
 
       }
     );
-  }}
+    
+  }
+  ngOnInit() {
+    
+  }
+
+}
