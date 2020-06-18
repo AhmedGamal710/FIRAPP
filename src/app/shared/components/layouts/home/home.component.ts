@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Post, Miscellaneousfields, Applicationdevelopment, Datascience, Competitiveprogramming } from './../../../classes/post'
 import { PostsService } from './../../../services/posts.service';
+import { UserInfo } from 'src/app/shared/classes/Userinfo';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,13 +10,21 @@ import { PostsService } from './../../../services/posts.service';
 })
 export class HomeComponent implements OnInit {
   isOption:boolean = false
-  constructor(private _postser:PostsService) { }
+  // check auth
+  isLogin: boolean = false
+  constructor(private _postser:PostsService) { 
+    // check user
+    if (JSON.parse(localStorage.getItem("User")) != 0) {
+      this.isLogin = true
+    }
+  }
   // get interfaces
   postinterface: Post[];
   miscInterface: Miscellaneousfields [];
   appdev:Applicationdevelopment[];
   datasince:Datascience[];
-  programming:Competitiveprogramming
+  programming:Competitiveprogramming;
+  userInfo: UserInfo;
   // for home array
   Web: Array<any>
   Miscellaneousfields: Array<any>
@@ -22,37 +32,34 @@ export class HomeComponent implements OnInit {
   datascine: Array<any>
   program:Array<any>
 
-
-  ngOnInit() {
+  
+   ngOnInit() {
+    // get user info
+    this.userInfo = JSON.parse(localStorage.getItem("User"))
     // Web Post
     this._postser.web().subscribe(data => {
       this.postinterface = data
       this.Web = data.map( l  => l.post ).flat()
-      console.log( "Web" + this.Web)
     })
     // Miscellaneousfields post 
     this._postser.Miscellaneousfields().subscribe(data => {
       this.miscInterface = data 
       this.Miscellaneousfields = data.map( l => l.post ).flat()
-      console.log( "Miscellaneousfields" + this.Miscellaneousfields)
     })
     // Applicationdevelopment post
     this._postser.Applicationdevelopment().subscribe(data => {
       this.appdev = data 
       this.appDeveloper = data.map( l => l.post ).flat()
-      console.log( "appDeveloper" + this.appDeveloper)
     })
     // Datascience post
     this._postser.Datascience().subscribe(data => {
       this.datasince = data 
       this.datascine = data.map( l => l.post ).flat()
-      console.log("datascine" + this.datascine)
     })
     // Competitiveprogramming
     this._postser.Competitiveprogramming().subscribe(data => {
       this.programming = data 
       this.program = data.map( l => l.post ).flat()
-      console.log( "progrramming" +  this.program)
     })
   }
   scrollDown(){
@@ -73,17 +80,17 @@ export class HomeComponent implements OnInit {
   }
 
   selectpox(){
-    var ele = document.getElementById("category")
-    if( ele.value == "web" ) {
+    var ele  = <HTMLInputElement>document.getElementById("category")
+    if( ele?.value == "web" ) {
       document.getElementById("new-select").style.display = "inline"
       document.getElementById("option").innerHTML = "front end"
     }
-    if( ele.value == "tecnology" ) {
+    if( ele?.value == "tecnology" ) {
       document.getElementById("new-select").style.display = "inline"
       document.getElementById("option").innerHTML = "laptops"
     }
-    if( ele.value == "programing" ) {
-      document.getElementById("new-select").style.display = "inline"
+    if( ele?.value == "programing" ) {
+      const l  = document.getElementById("new-select").style.display = "inline"
       document.getElementById("option").innerHTML = "c++"
     }
   }

@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this._AuthService.login(this.loginModel).subscribe(
       response => {
-       console.log(response)
+      //  console.log(response)
         localStorage.setItem("token", response.token as string);
         localStorage.setItem("role", response.role  as string);
 
@@ -33,7 +33,13 @@ export class LoginComponent implements OnInit {
         // get user info
         this.userId = response.id
         this._AuthService.userInfo(this.userId).subscribe(
-          res => { this.userdeatil = res }
+          res => { 
+            this.userdeatil = res
+            localStorage.setItem("User", JSON.stringify(res))
+            console.log("hello from User local")
+            
+          }
+          
         )
       },
       error => {

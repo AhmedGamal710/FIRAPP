@@ -11,17 +11,25 @@ export class NavbarComponent implements OnInit {
   accountImg ="../../../../../assets/image/nav/account.png"
   todayDate = new Date();
   userInfo: UserInfo
-
-  constructor(private _AuthService:AuthService) { }
-
-  ngOnInit() {
-    this._AuthService.userInfo(this.userInfo._id).subscribe()
-    setTimeout(() => {
-      console.log(" from naaaaav ")
-      console.log(this.userInfo._id)
-     }, 3000);
-   
-  }
+  isOption: boolean = false
+  isLogin: boolean = false
+  constructor(private _AuthService:AuthService) {
+    
+    if (JSON.parse(localStorage.getItem("User")) != 0) {
+      this.isLogin = ! this.isLogin
+    }
   
 
+   }
+
+  ngOnInit() {   
+    this.userInfo = JSON.parse(localStorage.getItem("User"))
+  }
+  
+  option(){
+    this.isOption = !this.isOption
+  }
+  Logout(){
+    localStorage.removeItem("User")
+  }
 }
