@@ -1,57 +1,99 @@
-<div class="container">
+<div class="container ">
   <div class="row">
 <h3>{{errormsg}}</h3>
-    <table class="table table-hover table-dark col-md-5">
+<div class="col-md-7 m-auto">
+  <button type="button" data-toggle="modal" data-target="#exampleModalScrollable" class="add_cat blog_bg_lightgreen pt-2 pb-2 mb-2">Add Sub Category</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class=" blog_bg_lightgreen title pt-2 pb-1" style="font-family: Montserrat, sans-serif">Add Category</div>
+
+        <form #addForm="ngForm"  (ngSubmit)="addwebcategory(addForm)" novalidate>
+          <div class="form-group">
+            <input type="text" #name="ngModel" pattern="^.{2,15}$"
+             [class.is-invalid]=" name.invalid && name.touched" required class="form-control" 
+             [(ngModel)]=" websubcat.name"  name="name" aria-describedby="emailHelp" placeholder="Enter Name">
+             <div *ngIf="name.errors && (name.invalid || name.touched)">
+              <small class="text-danger" *ngIf="name.errors.required && name.touched">Name is
+                required</small>
+              <small class="text-danger" *ngIf="name.errors.pattern && name.touched">Name must be from 2 to 15
+                Character</small>
+            </div>
+          </div>
+     
+          <button type="button" class="btn btn-secondary mr-5" data-dismiss="modal">Close</button>
+        <button type="submit" [disabled]="addForm.form.invalid" class="btn blog_bg_pink">Save changes</button>
+        </form>
+      </div>
+  
+    </div>
+  </div>
+</div>
+<div *ngIf="err" class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Something went Wrong</strong> Please Try Again.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+    <table class="table table-hover table-dark ">
      
       <tbody>
         <tr *ngFor="let item of webmodel ; let i = index">
           <th scope="row">{{i +1}}</th>
           <td>{{item.name}}</td>
-          <td><button type="button" data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-primary btn-sm"> Update</button>
+          <td><button type="button" data-toggle="modal" [attr.href]="'#'+ item.name.slice(0, 2)" class="btn btn-primary btn-sm"> Update</button>
+            <div class="modal fade" id="{{item.name.slice(0, 2)}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+            aria-hidden="true">
+           
+             <div class="modal-dialog modal-dialog-centered" role="document">
+               <div class="modal-content">
+               
+                 <div class="modal-body">
+                   <div class=" blog_bg_lightgreen title pt-2 pb-1" style="font-family: Montserrat, sans-serif">Update Category</div>
+           
+                   <form #updateForm="ngForm" (ngSubmit)="onSubmit(item)"  novalidate>
+                     <div class="form-group">
+                       <input type="text" #name="ngModel" pattern="^.{2,15}$"
+                        [class.is-invalid]=" name.invalid && name.touched" required class="form-control" 
+                        [(ngModel)]=" webcat.name"  name="name" aria-describedby="emailHelp" placeholder="Enter Name">
+                        <div *ngIf="name.errors && (name.invalid || name.touched)">
+                         <small class="text-danger" *ngIf="name.errors.required && name.touched">Name is
+                           required</small>
+                         <small class="text-danger" *ngIf="name.errors.pattern && name.touched">Name must be from 2 to 15
+                           Character</small>
+                       </div>
+                     </div>
+                
+                     <button type="button" class="btn btn-secondary mr-5" data-dismiss="modal">Close</button>
+                   <button type="submit" class="add_cat"  [disabled]="updateForm.form.invalid" class="btn blog_bg_pink" >Save changes</button>
+                   </form>
+                 </div>
+               
+               </div>
+             </div>
+           </div>
+          
           </td>
           <td><button type="button" (click)="deletewebcategory(item)"  class="btn btn-danger btn-sm">Delete</button>
           </td>
-          <div class="modal fade"  id="exampleModalCenter" tabindex="-1" role="dialog" 
-          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content" >
-                  
-                <div class="modal-body">
-                  <div class=" blog_bg_lightgreen title pt-2 pb-2" style="font-family: Montserrat, sans-serif">Update category</div>
-                  
-                  <form   #updateForm="ngForm"   (ngSubmit)="onSubmit(item)"   novalidate>
-                      
-                      <div class="form-group">
-                        <input type="text" class="form-control" name="name" #name="ngModel" pattern="^.{2,15}$" 
-                        [class.is-invalid]="name.invalid && name.touched"
-                        required class="form-control" [(ngModel)]=" webcat.name"  placeholder="Add New Name">
-                        <div *ngIf="name.errors && (name.invalid || name.touched)">
-                          <small class="text-danger" *ngIf="name.errors.required && name.touched" >Name is
-                            required</small>
-                          <small class="text-danger" *ngIf="name.errors.pattern && name.touched" >Name must be from 2 to 15
-                            digits</small>
-                        </div>
-                      </div>
-                    
-                      <button type="submit" [disabled]="updateForm.form.invalid"  class="btn blog_bg_pink mt-4 mb-2 float-left"><a  class="blog_btn blog_bg_pink cookie_btn">Update</a></button>
-                    </form>
-                </div>
-                
-              </div>
-            </div>
-          </div>
+         
+
+
         </tr>
        
       </tbody>
     </table>
 
- 
+
+ </div>
 
   </div>
-  
+
+ 
 </div>
 
 
-
-
-<!-- Modal -->
